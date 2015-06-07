@@ -1,22 +1,32 @@
 doctype html
-html(lang="en")
+html(lang="en", ng-app="app")
   head
     title NotesCMS
-    link(rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css")
-    link(rel="stylesheet" href="/vendor/sweetalert/dist/sweetalert.css")
-    link(rel="stylesheet" href="/vendor/angularjs/angular-csp.css")
+    
+    link(href="favicon.ico", rel="icon", type="image/x-icon")
+    
+    link(rel="stylesheet", href="/vendor/bootstrap-material-design/dist/css/material-fullpalette.css")
+    link(rel="stylesheet", href="/vendor/bootstrap-material-design/dist/css/ripples.css")
+    link(rel="stylesheet", href="/vendor/bootstrap-material-design/dist/css/roboto.css")
+    link(rel="stylesheet", href="/vendor/sweetalert/dist/sweetalert.css")
+    link(rel="stylesheet", href="/vendor/angularjs/angular-csp.css")
 
-    link(rel="stylesheet" href="/dest/styles/site.css")
-  body(ng-app="app")
-    .main Loading...
-            
-        
+    link(rel="stylesheet", href="/dest/styles/site.css")
+    
+  body
+    note-list.main(selected="currentNote") Loading...
+    note-preview(item="currentNote")
+    
     script(src="/vendor/jquery/dist/jquery.js")
-    script(src="/vendor/bootstrap/dist/js/bootstrap.js")
+    script(src="/vendor/arrive/src/arrive.js")
+    script(src="/vendor/bootstrap-material-design/dist/js/material.js")
+    script(src="/vendor/bootstrap-material-design/dist/js/ripples.js")
     script(src="/vendor/sweetalert/dist/sweetalert.min.js")
     script(src="/vendor/angularjs/angular.js")
     script(src="/vendor/angular-route/angular-route.js")
     
-    
-    script(src="/dest/app/utils/ErrorHandler.js")
     script(src="/dest/app/app.js")
+    script(src="/dest/app/templates.js")
+    script(src="/dest/app/utils/ErrorHandler.js")
+    script(src="/dest/app/note/NoteList.js")
+    script(src="/dest/app/note/NotePreview.js")

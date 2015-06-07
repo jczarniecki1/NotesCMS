@@ -1,0 +1,12 @@
+ul.list-group
+	//.mdi-content-add
+	li.list-group-item(
+			ng-repeat="item in items"
+			ng-click="select(item)"
+		)
+		.list-group-item-heading  [{{ item.id }}] {{ item.title }}
+		.row-content {{ item.subject }} | {{ item.subjectType }}
+		.row-picture.right
+			i.icon.mdi-content-add(
+				ng-class="{ 'icon-danger': (item.id === selected.id) }"
+			)
