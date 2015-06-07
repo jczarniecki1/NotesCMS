@@ -1,10 +1,12 @@
-body,
-.page {
-  height: 100%; }
-
 .inverted {
   -webkit-filter: invert(100%) !important;
   filter: invert(100%) !important; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
 
 [class^='toolbar'] {
   width: 80px;
@@ -25,6 +27,10 @@ body,
   .toolbar-bottom .btn:first-child {
     border-top-width: 1px; }
 
+body,
+.page {
+  height: 100%; }
+
 .content {
   position: absolute;
   height: 100%;
@@ -35,33 +41,6 @@ body,
 note-list {
   display: inline-block;
   width: 400px; }
-  note-list .list-group > .list-group-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 0; }
-    note-list .list-group > .list-group-item.selected {
-      background: #fff;
-      margin-right: -1px;
-      z-index: 1; }
-      note-list .list-group > .list-group-item.selected .row-action-primary {
-        padding-right: 1px; }
-    note-list .list-group > .list-group-item .row-content {
-      min-height: 55px; }
-    note-list .list-group > .list-group-item .list-group-item-heading {
-      font-size: 16px;
-      line-height: 18px;
-      font-weight: 500;
-      margin-top: 8px; }
-    note-list .list-group > .list-group-item .list-group-item-text {
-      margin-bottom: 5px; }
-    note-list .list-group > .list-group-item .row-action-primary {
-      float: right;
-      padding-top: 0;
-      padding-right: 0; }
-      note-list .list-group > .list-group-item .row-action-primary > i {
-        height: 55px;
-        line-height: 55px;
-        background: none;
-        color: inherit; }
 
 note-preview {
   position: absolute;
@@ -69,9 +48,41 @@ note-preview {
   width: calc(100% - 400px);
   border-left: 1px solid rgba(0, 0, 0, 0.2); }
 
+note-list .list-group > .list-group-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0; }
+  note-list .list-group > .list-group-item.selected {
+    background: #fff;
+    margin-right: -1px;
+    z-index: 1; }
+    note-list .list-group > .list-group-item.selected .row-action-primary {
+      padding-right: 1px; }
+  note-list .list-group > .list-group-item .row-content {
+    min-height: 55px; }
+  note-list .list-group > .list-group-item .list-group-item-heading {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+    margin-top: 8px; }
+    note-list .list-group > .list-group-item .list-group-item-heading > i {
+      font-size: 14px;
+      margin-right: 5px;
+      color: teal; }
+  note-list .list-group > .list-group-item .list-group-item-text {
+    margin-bottom: 5px; }
+  note-list .list-group > .list-group-item .row-action-primary {
+    float: right;
+    padding-top: 0;
+    padding-right: 0; }
+    note-list .list-group > .list-group-item .row-action-primary > i {
+      height: 55px;
+      line-height: 55px;
+      background: none;
+      color: inherit; }
+
 .note-preview-content {
   background: #fff;
-  padding: 20px 30px;
+  padding: 5px 30px;
   height: 100%; }
 
 .starred-title-icon {

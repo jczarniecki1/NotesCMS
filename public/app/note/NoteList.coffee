@@ -16,6 +16,7 @@ fakeNote = ->
             readLater: false
             done: false
             starred: false
+            owned: (randomIndex() % 2 is 0)
         author:
             username: 'John Doe'
             group: '2015_online_db'

@@ -13,5 +13,7 @@
 		
 		.row-content 
 		
-			.list-group-item-heading {{ item.title }}
+			.list-group-item-heading
+				i.mdi-action-grade(ng-if="item.flags.starred")
+				| {{ item.title }}
 			.list-group-item-text {{ item.subject }} | {{ item.subjectType }}

@@ -1,0 +1,26 @@
+
+[class^='toolbar'] {
+	width: $toolbar-width;
+	position: absolute;
+	
+	.btn {
+		width: $toolbar-width;
+		height: $toolbar-width;
+		padding: 15px;
+		margin: 0;
+		border: 0px solid $std-border-color;
+		border-bottom-width: 1px;
+	}
+}
+
+.toolbar-top {
+	top: 0;
+}
+
+.toolbar-bottom {
+	bottom: 0;
+	
+	.btn:first-child {
+		border-top-width: 1px;
+	}
+}

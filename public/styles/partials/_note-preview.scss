@@ -1,0 +1,18 @@
+
+.note-preview-content {
+	background: #fff;
+	padding: 5px 30px;
+	height: 100%;
+}
+
+.starred-title-icon {
+	color: #ddd;
+	
+	&:hover {
+		color: #aaa;
+	}
+	
+	&.active {
+		color: teal;
+	}
+}

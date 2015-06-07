@@ -1,0 +1,26 @@
+
+body,
+.page {
+	height: 100%;
+}
+
+.content {
+	position: absolute;
+	height: 100%;
+	margin-left: $toolbar-width;
+	border-left: $std-border;
+	width: calc(100% - #{$toolbar-width});
+}
+
+
+note-list {
+	display: inline-block;
+	width: $note-list-width;
+}
+
+note-preview {
+	position: absolute;
+	height: calc(100% - #{$subject-tabs-height});
+	width: calc(100% - #{$note-list-width});
+	border-left: $std-border;
+}

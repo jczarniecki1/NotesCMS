@@ -3,13 +3,44 @@
 	
 		i.starred-title-icon.mdi-action-grade(
 			ng-class="{ 'active': item.flags.starred }"
-			ng-click="item.flags.starred = !item.flags.starred"
+			ng-click="toggleStarred(item)"
 		) 
 		| &nbsp;{{ item.title }}
 	
 	p {{ item.subject }} | {{ item.subjectType }}
 	p {{ item.content }}
-	.btn.btn-primary.btn-raised(
+	
+	.btn.btn-primary.btn-raised.right(
 		ng-if="!item.flags.owned"
-		ng-click="item.flags.done = !item.flags.done"
-) Mark as {{ item.flags.done ? 'Undone' : 'Done' }}
+		ng-click="toggleDone(item)"
+	) Mark as {{ item.flags.done ? 'Undone' : 'Done' }}
+	
+	.btn.btn-warning.btn-raised(
+		ng-if="!item.flags.owned"
+		data-toggle="modal" 
+		data-target="#request-dialog"
+	) Request Update
+
+	.modal#request-dialog
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+					h4.modal-title Request update
+				.modal-body
+					form
+						.form-group
+							label.col-lg-2.control-label(for='requestMessage') Message
+							.col-lg-10
+								textarea#requestMessage.form-control(rows='3', ng-model="requestMessage")
+								span.help-block
+									| Message will be sent to the author and his group administrator.
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Abort
+					button.btn.btn-primary(type='button') Send
+
+	
+	.btn.btn-warning.btn-raised(
+		ng-if="item.flags.owned"
+		ng-click="togglePublished(item)"
+	) {{ item.flags.published ? 'Unpublish' : 'Publish' }}

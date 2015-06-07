@@ -32,7 +32,8 @@ fakeNote = function() {
     flags: {
       readLater: false,
       done: false,
-      starred: false
+      starred: false,
+      owned: randomIndex() % 2 === 0
     },
     author: {
       username: 'John Doe',
