@@ -8,4 +8,18 @@ class Layout extends Directive
 				scope.invertColors = ->
 					scope.inverted = !scope.inverted
 					localStorage.inverted = scope.inverted
+					
+				scope.goAddNote = ->
+					newNote = 
+						title: 'Untitled'
+						subject: '???'
+						subjectType: '???'
+        
+						flags:
+							owned: true
+							published: false
+							edit: true
+					
+					scope.allNotes.push newNote
+					scope.currentNote = newNote
 		}

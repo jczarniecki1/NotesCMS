@@ -7,9 +7,24 @@ Layout = (function() {
       replace: true,
       templateUrl: 'templates/html/Layout.html',
       link: function(scope, element) {
-        return scope.invertColors = function() {
+        scope.invertColors = function() {
           scope.inverted = !scope.inverted;
           return localStorage.inverted = scope.inverted;
+        };
+        return scope.goAddNote = function() {
+          var newNote;
+          newNote = {
+            title: 'Untitled',
+            subject: '???',
+            subjectType: '???',
+            flags: {
+              owned: true,
+              published: false,
+              edit: true
+            }
+          };
+          scope.allNotes.push(newNote);
+          return scope.currentNote = newNote;
         };
       }
     };

@@ -5,6 +5,7 @@ class NotePreview extends Directive
 			transclude: true
 			templateUrl: '/templates/html/NotePreview.html'
 			scope: {
+				items: '='
 				item: '='
 			}
 			link: (scope) ->
@@ -23,7 +24,19 @@ class NotePreview extends Directive
 					item.flags.published = !item.flags.published
 					# TODO: save in background
 				
-				scope.showRequestDialog = (item) ->
-					scope.requestDialogVisible = true
-							
+				scope.toggleReadLater = (item) ->
+					item.flags.readLater = !item.flags.readLater
+					
+				scope.removeCurrentItem = ->
+					index = scope.items.indexOf(scope.item)
+					scope.items.splice(index, 1)
+					nextIndex = if index < scope.items.length then index else index - 1
+					scope.item = scope.items[nextIndex]
+					setTimeout () -> $('#remove-dialog').modal('toggle')
+					# TODO: save in background
+					
+				
+				scope.toggleEditMode = (item) ->
+					item.flags.edit = !item.flags.edit
+
 		}

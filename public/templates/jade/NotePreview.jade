@@ -1,5 +1,5 @@
 .note-preview-content(ng-if="item")
-	h3 
+	h3(ng-if="!item.flags.edit")
 	
 		i.starred-title-icon.mdi-action-grade(
 			ng-class="{ 'active': item.flags.starred }"
@@ -7,13 +7,40 @@
 		) 
 		| &nbsp;{{ item.title }}
 	
-	p {{ item.subject }} | {{ item.subjectType }}
-	p {{ item.content }}
+	p(ng-if="!item.flags.edit") {{ item.subject }} | {{ item.subjectType }}
+	p(ng-bind-html="item.content", ng-if="!item.flags.edit")
+	
+	form.form-horizontal(ng-if="item.flags.edit")
+		br
+		.form-group
+			label.col-lg-2.control-label(for='title', autofocus) Title
+			.col-lg-10
+				input#title.form-control(type="text", ng-model="item.title")
+		.form-group
+			label.col-lg-2.control-label(for='title') Subject
+			.col-lg-10
+				input#subject.form-control(type="text", ng-model="item.subject")
+		.form-group
+			label.col-lg-2.control-label(for='subjectType') Subject type
+			.col-lg-10
+				input#subjectType.form-control(type="text", ng-model="item.subjectType")
+		.form-group
+			label.col-lg-2.control-label Content
+			.col-lg-10
+				text-angular#content(ng-model="item.content")
 	
 	.btn.btn-primary.btn-raised.right(
 		ng-if="!item.flags.owned"
 		ng-click="toggleDone(item)"
 	) Mark as {{ item.flags.done ? 'Undone' : 'Done' }}
+	
+	.btn.btn-success.btn-raised.right(
+		ng-if="!item.flags.owned"
+		ng-click="toggleReadLater(item)"
+	) 
+	
+		i.mdi-action-turned-in(ng-if="item.flags.readLater")
+		| {{ item.flags.readLater ? 'Bookmarked' : 'Read Later' }}
 	
 	.btn.btn-warning.btn-raised(
 		ng-if="!item.flags.owned"
@@ -32,15 +59,38 @@
 						.form-group
 							label.col-lg-2.control-label(for='requestMessage') Message
 							.col-lg-10
-								textarea#requestMessage.form-control(rows='3', ng-model="requestMessage")
+								textarea#requestMessage.form-control(rows='3', ng-model="requestMessage", autofocus)
 								span.help-block
 									| Message will be sent to the author and his group administrator.
 				.modal-footer
 					button.btn.btn-default(type='button', data-dismiss='modal') Abort
 					button.btn.btn-primary(type='button') Send
+					
+	
+	
+	.btn.btn-danger.btn-raised.right(
+		ng-if="item.flags.owned"
+		data-toggle="modal" 
+		data-target="#remove-dialog"
+	) Remove
+
+	.modal#remove-dialog
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+					h4.modal-title Are you sure? Current note will be lost forever...
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Abort
+					button.btn.btn-danger(type='button', ng-click="removeCurrentItem()") Delete
 
 	
-	.btn.btn-warning.btn-raised(
+	.btn.btn-success.btn-raised.right(
 		ng-if="item.flags.owned"
+		ng-click="toggleEditMode(item)"
+	) {{ item.flags.edit ? 'Save' : 'Edit' }}
+	
+	.btn.btn-warning.btn-raised(
+		ng-if="item.flags.owned && !item.flags.edit"
 		ng-click="togglePublished(item)"
 	) {{ item.flags.published ? 'Unpublish' : 'Publish' }}

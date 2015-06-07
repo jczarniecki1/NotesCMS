@@ -3,7 +3,7 @@
 	.list-group-item(
 			ng-repeat="item in items"
 			ng-click="select(item)"
-			ng-class="{ 'selected': item.id === selected.id }"
+			ng-class="{ 'selected': item === selected }"
 		)
 		.row-action-primary
 		

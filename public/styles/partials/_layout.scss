@@ -16,6 +16,9 @@ body,
 note-list {
 	display: inline-block;
 	width: $note-list-width;
+	height: calc(100% - #{$subject-tabs-height + 10px});
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 note-preview {
@@ -23,4 +26,5 @@ note-preview {
 	height: calc(100% - #{$subject-tabs-height});
 	width: calc(100% - #{$note-list-width});
 	border-left: $std-border;
+	overflow-y: scroll;
 }

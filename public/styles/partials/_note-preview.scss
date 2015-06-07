@@ -2,7 +2,8 @@
 .note-preview-content {
 	background: #fff;
 	padding: 5px 30px;
-	height: 100%;
+	min-height: 100%;
+	overflow: auto;
 }
 
 .starred-title-icon {
@@ -14,5 +15,13 @@
 	
 	&.active {
 		color: teal;
+	}
+}
+
+text-angular .btn-toolbar > .btn-group {
+	margin-bottom: -5px;
+	
+	&:last-child {
+		margin-bottom: 5px;
 	}
 }

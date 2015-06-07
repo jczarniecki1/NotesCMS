@@ -10,3 +10,10 @@
 .right {
 	float: right;
 }
+
+.btn > [class^="mdi-"] {
+	line-height: .7em;
+	vertical-align: middle;
+	margin-left: -25px;
+	margin-right: 5px;
+}

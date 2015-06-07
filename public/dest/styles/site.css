@@ -8,6 +8,12 @@
 .right {
   float: right; }
 
+.btn > [class^="mdi-"] {
+  line-height: .7em;
+  vertical-align: middle;
+  margin-left: -25px;
+  margin-right: 5px; }
+
 [class^='toolbar'] {
   width: 80px;
   position: absolute; }
@@ -40,13 +46,17 @@ body,
 
 note-list {
   display: inline-block;
-  width: 400px; }
+  width: 400px;
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 note-preview {
   position: absolute;
   height: calc(100% - 40px);
   width: calc(100% - 400px);
-  border-left: 1px solid rgba(0, 0, 0, 0.2); }
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: scroll; }
 
 note-list .list-group > .list-group-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -83,7 +93,8 @@ note-list .list-group > .list-group-item {
 .note-preview-content {
   background: #fff;
   padding: 5px 30px;
-  height: 100%; }
+  min-height: 100%;
+  overflow: auto; }
 
 .starred-title-icon {
   color: #ddd; }
@@ -91,6 +102,11 @@ note-list .list-group > .list-group-item {
     color: #aaa; }
   .starred-title-icon.active {
     color: teal; }
+
+text-angular .btn-toolbar > .btn-group {
+  margin-bottom: -5px; }
+  text-angular .btn-toolbar > .btn-group:last-child {
+    margin-bottom: 5px; }
 
 .nav-tabs > li {
   border-bottom: 6px solid rgba(255, 255, 255, 0);
