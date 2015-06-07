@@ -7,9 +7,9 @@
 		)
 		.row-action-primary
 		
-			//i.mdi-action-settings.mdi-lg
-			i.mdi-content-forward.mdi-lg
-			//i.mdi-navigation-check.mdi-lg
+			i.mdi-action-settings.mdi-lg(ng-if="item.flags.owned")
+			i.mdi-content-forward.mdi-lg(ng-if="!item.flags.done && !item.flags.owned")
+			i.mdi-navigation-check.mdi-lg(ng-if="item.flags.done")
 		
 		.row-content 
 		

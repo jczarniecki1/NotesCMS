@@ -10,9 +10,20 @@ SubjectTabs = (function() {
         selected: '='
       },
       link: function(scope) {
-        return scope.select = function(item) {
+        scope.select = function(item) {
           return scope.selected = item;
         };
+        return scope.items = [
+          {
+            name: 'ELE'
+          }, {
+            name: 'SEM2'
+          }, {
+            name: 'ZPR'
+          }, {
+            name: 'TBO'
+          }
+        ];
       }
     };
   }

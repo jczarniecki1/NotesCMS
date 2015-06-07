@@ -11,4 +11,11 @@ class SubjectTabs extends Directive
             link: (scope) ->
                 scope.select = (item) ->
                     scope.selected = item
+                
+                scope.items = [
+                    { name: 'ELE' }
+                    { name: 'SEM2'}
+                    { name: 'ZPR' }
+                    { name: 'TBO' }
+                ]
         }

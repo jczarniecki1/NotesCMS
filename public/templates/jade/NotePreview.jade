@@ -1,4 +1,15 @@
-.note-preview(ng-if="item")
-	h3 [{{ item.id }}] {{ item.title }}
+.note-preview-content(ng-if="item")
+	h3 
+	
+		i.starred-title-icon.mdi-action-grade(
+			ng-class="{ 'active': item.flags.starred }"
+			ng-click="item.flags.starred = !item.flags.starred"
+		) 
+		| &nbsp;{{ item.title }}
+	
 	p {{ item.subject }} | {{ item.subjectType }}
 	p {{ item.content }}
+	.btn.btn-primary.btn-raised(
+		ng-if="!item.flags.owned"
+		ng-click="item.flags.done = !item.flags.done"
+) Mark as {{ item.flags.done ? 'Undone' : 'Done' }}

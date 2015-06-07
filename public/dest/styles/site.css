@@ -30,28 +30,69 @@ body,
   height: 100%;
   margin-left: 80px;
   border-left: 1px solid rgba(0, 0, 0, 0.2);
-  width: calc(100% - 95px); }
+  width: calc(100% - 80px); }
 
 note-list {
   display: inline-block;
   width: 400px; }
   note-list .list-group > .list-group-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 0; }
     note-list .list-group > .list-group-item.selected {
-      background: rgba(0, 0, 0, 0.2); }
+      background: #fff;
+      margin-right: -1px;
+      z-index: 1; }
+      note-list .list-group > .list-group-item.selected .row-action-primary {
+        padding-right: 1px; }
+    note-list .list-group > .list-group-item .row-content {
+      min-height: 55px; }
+    note-list .list-group > .list-group-item .list-group-item-heading {
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 500;
+      margin-top: 8px; }
+    note-list .list-group > .list-group-item .list-group-item-text {
+      margin-bottom: 5px; }
     note-list .list-group > .list-group-item .row-action-primary {
       float: right;
-      padding-top: 5px;
+      padding-top: 0;
       padding-right: 0; }
       note-list .list-group > .list-group-item .row-action-primary > i {
+        height: 55px;
+        line-height: 55px;
         background: none;
         color: inherit; }
 
 note-preview {
   position: absolute;
-  height: 100%;
-  width: calc(100% - 495px);
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 20px 30px; }
+  height: calc(100% - 40px);
+  width: calc(100% - 400px);
+  border-left: 1px solid rgba(0, 0, 0, 0.2); }
+
+.note-preview-content {
+  background: #fff;
+  padding: 20px 30px;
+  height: 100%; }
+
+.starred-title-icon {
+  color: #ddd; }
+  .starred-title-icon:hover {
+    color: #aaa; }
+  .starred-title-icon.active {
+    color: teal; }
+
+.nav-tabs > li {
+  border-bottom: 6px solid rgba(255, 255, 255, 0);
+  height: 40px; }
+  .nav-tabs > li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 6px solid rgba(255, 255, 255, 0.5);
+    transition: background-color .1s .2s linear, border-color .5s linear; }
+  .nav-tabs > li .add-subject {
+    padding-left: 10px;
+    padding-right: 10px; }
+    .nav-tabs > li .add-subject > i {
+      padding-top: 0;
+      margin-top: -4px; }
 
 /*# sourceMappingURL=site.css.map */
