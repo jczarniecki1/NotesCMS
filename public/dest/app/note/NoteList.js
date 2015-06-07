@@ -60,7 +60,7 @@ NoteList = (function() {
         selected: '='
       },
       link: function(scope) {
-        scope.items = [fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote()];
+        scope.items = [fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote()];
         return scope.select = function(item) {
           return scope.selected = item;
         };

@@ -51,9 +51,6 @@ class NoteList extends Directive
                     fakeNote()  
                     fakeNote()  
                     fakeNote()  
-                    fakeNote()  
-                    fakeNote()  
-                    fakeNote()  
                 ]
                 
                 scope.select = (item) ->
