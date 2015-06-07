@@ -1,4 +1,4 @@
-randomIndex = -> Math.round(Math.random() * 9.9) 
+randomIndex = -> Math.floor(Math.random() * 9.9) 
 words = ['awesome', 'Lorem', 'ipsum', 'very', 'hard', 'lots of', 'work', 'weekend', 'notes', 'programming']
 subjects = ['JPA', 'TBD', 'TSA', 'IAB', 'ELE', 'GUI', 'ABC', 'KOR', 'ZAP', 'JFA']
 types = ['Project', 'Lecture', 'Exam', 'Exercises']

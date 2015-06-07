@@ -7,9 +7,7 @@ class AppConfig extends Config
         ErrorHandling.Message('Loading timeout', 'Initialization takes longer than expected...').ShowAfter 3500
         $.material.init()
         
-# class Main extends Controller
-#     constructor: ($scope) ->
-#         $scope.currentProject = {id: 0}
-#         $scope.$watch 'currentProject', ->
-#             console.log 'currentProject changed -> ' + $scope.currentProject.id
-        
+
+class AppInit extends Run
+    constructor: ($rootScope) ->
+        $rootScope.inverted = localStorage.inverted is 'true'

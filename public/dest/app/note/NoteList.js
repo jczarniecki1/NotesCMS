@@ -1,7 +1,7 @@
 var NoteList, fakeNote, randomIndex, subjects, types, words;
 
 randomIndex = function() {
-  return Math.round(Math.random() * 9.9);
+  return Math.floor(Math.random() * 9.9);
 };
 
 words = ['awesome', 'Lorem', 'ipsum', 'very', 'hard', 'lots of', 'work', 'weekend', 'notes', 'programming'];

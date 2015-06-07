@@ -1,0 +1,22 @@
+.page
+    .toolbar-top
+        .btn.btn-default.mdi-2x.mdi-action-stars(ng-click="goStarred()")
+        .btn.btn-default.mdi-2x.mdi-action-turned-in(ng-click="goReadLater()")
+        .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="goSearch()")
+        .btn.btn-default.mdi-2x.mdi-content-add(ng-click="goAddNote()")
+        
+    .toolbar-bottom
+        .btn.btn-default.mdi-2x.mdi-communication-invert-colors-on(ng-click="invertColors()")
+        .btn.btn-default.mdi-2x.mdi-action-account-box(ng-click="goUserProfile()")
+    
+    .content
+        subject-tabs(
+            selected="currentSubject"
+        )
+        note-list(
+            subject="currentSubject"
+            selected="currentNote"
+        )
+        note-preview(
+            item="currentNote"
+        )

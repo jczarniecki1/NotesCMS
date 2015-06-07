@@ -1,3 +1,83 @@
-.main {
-	border: 1px solid red;
+$toolbar-width: 80px;
+$note-list-width: 400px;
+
+$std-border-color: rgba(0,0,0,.2);
+$std-border: 1px solid $std-border-color;
+$selection-color: rgba(0,0,0,.2);
+
+body,
+.page {
+	height: 100%;
+}
+
+.inverted {
+	-webkit-filter: invert(100%)!important;
+	filter: invert(100%)!important;
+}
+
+[class^='toolbar'] {
+	width: $toolbar-width;
+	position: absolute;
+	
+	.btn {
+		width: $toolbar-width;
+		height: $toolbar-width;
+		padding: 15px;
+		margin: 0;
+		border: 0px solid $std-border-color;
+		border-bottom-width: 1px;
+	}
+}
+
+.toolbar-top {
+	top: 0;
+}
+
+.toolbar-bottom {
+	bottom: 0;
+	
+	.btn:first-child {
+		border-top-width: 1px;
+	}
+}
+
+.content {
+	position: absolute;
+	height: 100%;
+	margin-left: $toolbar-width;
+	border-left: $std-border;
+	width: calc(100% - #{$toolbar-width + 15px});
+}
+
+note-list {
+	display: inline-block;
+	width: $note-list-width;
+	
+	.list-group > .list-group-item {
+		
+		border-bottom: $std-border;
+		
+		&.selected {
+			background: $selection-color;
+		}
+		
+		.row-action-primary {
+  			float: right;
+			padding-top: 5px;
+			padding-right: 0;
+			
+			> i {
+  				background: none;
+				color: inherit;
+			}
+		}
+	}
+}
+
+note-preview {
+	position: absolute;
+	height: 100%;
+	width: calc(100% - #{$toolbar-width + $note-list-width + 15px});
+	border-left: $std-border;
+	padding: 20px 30px;
 }

@@ -1,4 +1,4 @@
-var App, AppConfig;
+var App, AppConfig, AppInit;
 
 App = (function() {
   function App() {
@@ -19,4 +19,13 @@ AppConfig = (function() {
 
 })();
 
-angular.module('app', new App()).config([AppConfig]);
+AppInit = (function() {
+  function AppInit($rootScope) {
+    $rootScope.inverted = localStorage.inverted === 'true';
+  }
+
+  return AppInit;
+
+})();
+
+angular.module('app', new App()).config([AppConfig]).run(['$rootScope', AppInit]);

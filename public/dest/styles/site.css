@@ -1,4 +1,57 @@
-.main {
-  border: 1px solid red; }
+body,
+.page {
+  height: 100%; }
+
+.inverted {
+  -webkit-filter: invert(100%) !important;
+  filter: invert(100%) !important; }
+
+[class^='toolbar'] {
+  width: 80px;
+  position: absolute; }
+  [class^='toolbar'] .btn {
+    width: 80px;
+    height: 80px;
+    padding: 15px;
+    margin: 0;
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    border-bottom-width: 1px; }
+
+.toolbar-top {
+  top: 0; }
+
+.toolbar-bottom {
+  bottom: 0; }
+  .toolbar-bottom .btn:first-child {
+    border-top-width: 1px; }
+
+.content {
+  position: absolute;
+  height: 100%;
+  margin-left: 80px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  width: calc(100% - 95px); }
+
+note-list {
+  display: inline-block;
+  width: 400px; }
+  note-list .list-group > .list-group-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    note-list .list-group > .list-group-item.selected {
+      background: rgba(0, 0, 0, 0.2); }
+    note-list .list-group > .list-group-item .row-action-primary {
+      float: right;
+      padding-top: 5px;
+      padding-right: 0; }
+      note-list .list-group > .list-group-item .row-action-primary > i {
+        background: none;
+        color: inherit; }
+
+note-preview {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 495px);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px 30px; }
 
 /*# sourceMappingURL=site.css.map */

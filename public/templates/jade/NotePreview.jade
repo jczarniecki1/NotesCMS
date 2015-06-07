@@ -1,5 +1,4 @@
-.panel.note-preview(ng-if="item")
-	
-	.panel-heading  [{{ item.id }}] {{ item.title }}
+.note-preview(ng-if="item")
+	h3 [{{ item.id }}] {{ item.title }}
 	p {{ item.subject }} | {{ item.subjectType }}
 	p {{ item.content }}

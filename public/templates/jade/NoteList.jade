@@ -1,12 +1,17 @@
-ul.list-group
+.list-group
 	//.mdi-content-add
-	li.list-group-item(
+	.list-group-item(
 			ng-repeat="item in items"
 			ng-click="select(item)"
+			ng-class="{ 'selected': item.id === selected.id }"
 		)
-		.list-group-item-heading  [{{ item.id }}] {{ item.title }}
-		.row-content {{ item.subject }} | {{ item.subjectType }}
-		.row-picture.right
-			i.icon.mdi-content-add(
-				ng-class="{ 'icon-danger': (item.id === selected.id) }"
-			)
+		.row-action-primary
+		
+			//i.mdi-action-settings.mdi-lg
+			i.mdi-content-forward.mdi-lg
+			//i.mdi-navigation-check.mdi-lg
+		
+		.row-content 
+		
+			.list-group-item-heading {{ item.title }}
+			.list-group-item-text {{ item.subject }} | {{ item.subjectType }}
