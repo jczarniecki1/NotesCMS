@@ -1,1 +1,1 @@
-web: npm i -g coffee-script bower && npm i && bower install && coffee server.coffee
+web: npm start

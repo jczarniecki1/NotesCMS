@@ -22,5 +22,13 @@
     "gulp-plumber": "^1.0.1",
     "gulp-ruby-sass": "^1.0.5",
     "gulp-util": "^3.0.5"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "scripts": {
+    "preinstall": "npm i -g coffee-script bower",
+    "postinstall": "bower install",
+    "start": "coffee server.coffee"
   }
 }
