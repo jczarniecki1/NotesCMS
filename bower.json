@@ -1,0 +1,25 @@
+{
+  "name": "NotesCMS",
+  "version": "0.0.0",
+  "authors": [
+    "jsek <jsek.0.0.0.2@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.0",
+    "angularjs": "~1.4.0",
+    "arrive": "~2.2.0",
+    "bootstrap": "~3.3.4",
+    "bootstrap-material-design": "~0.3.0",
+    "sweetalert": "~1.0.1",
+    "textAngular": "~1.4.1"
+  }
+}

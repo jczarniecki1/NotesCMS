@@ -1,0 +1,1 @@
+web: npm i -g coffee-script && npm i && coffee server.coffee
