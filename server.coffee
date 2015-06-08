@@ -2,4 +2,4 @@ express = require('express');
 app = new express()
 
 app.use express.static __dirname + '\\public'
-	.listen 80
+	.listen (process.env.PORT or 8080)
