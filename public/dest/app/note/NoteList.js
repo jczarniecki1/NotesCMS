@@ -17,7 +17,7 @@ getParagraph = function() {
   }).join(' ').replace(/work/, '<strong>work</strong>').replace(/programming/, '<span style="color: blue;">programming</span>');
 };
 
-subjects = ['JPA', 'TBD', 'TSA', 'IAB', 'ELE', 'GUI', 'ABC', 'KOR', 'ZAP', 'JFA'];
+subjects = ['JPA', 'TBO', 'TSA', 'IAB', 'ELE', 'KOR', 'ZPR', 'SEM2'];
 
 types = ['Project', 'Lecture', 'Exam', 'Exercises'];
 
@@ -28,7 +28,7 @@ fakeNote = function() {
     title: [1, 2, 3, 4, 5].map(function() {
       return words[randomIndex()];
     }).join(' '),
-    subject: subjects[randomIndex()],
+    subject: subjects[randomIndex() % 8],
     subjectType: types[randomIndex() % 4],
     content: '<h4>Lorem ipsum...</h4>' + ("<p>" + (getParagraph()) + "<p>") + ("<p>" + (getParagraph()) + "<p>"),
     created: '2015-02-23',
@@ -57,12 +57,20 @@ NoteList = (function() {
       templateUrl: '/templates/html/NoteList.html',
       scope: {
         items: '=',
-        selected: '='
+        selected: '=',
+        subject: '='
       },
       link: function(scope) {
         scope.items = [fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote()];
-        return scope.select = function(item) {
+        scope.select = function(item) {
           return scope.selected = item;
+        };
+        return scope.bySubject = function(item) {
+          if ((scope.subject != null) && !scope.subject.showAll) {
+            return item.subject === scope.subject.name || item.flags.edit;
+          } else {
+            return true;
+          }
         };
       }
     };

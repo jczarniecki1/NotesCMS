@@ -1,7 +1,10 @@
-var SubjectTabs, defaultSubjects;
+var SubjectTabs, defaultSubjects, setSubjectFromHash;
 
 defaultSubjects = [
   {
+    name: 'All',
+    showAll: true
+  }, {
     name: 'ELE'
   }, {
     name: 'SEM2'
@@ -11,6 +14,17 @@ defaultSubjects = [
     name: 'TBO'
   }
 ];
+
+setSubjectFromHash = function(scope) {
+  var currentHash, matchingHash, matchingItem, selectableItems;
+  selectableItems = scope.items.slice(1);
+  matchingHash = location.href.match(/#([^#]+)$/);
+  currentHash = matchingHash != null ? matchingHash[1] : void 0;
+  matchingItem = selectableItems.filter(function(x) {
+    return x.name === currentHash;
+  })[0];
+  return scope.selected = matchingItem || scope.items[0];
+};
 
 SubjectTabs = (function() {
   function SubjectTabs() {
@@ -31,13 +45,18 @@ SubjectTabs = (function() {
         };
         if (localStorage.subjects) {
           scope.items = JSON.parse(localStorage.subjects);
+          if (scope.items.filter(function(x) {
+            return x.showAll;
+          }).length === 0) {
+            scope.items = defaultSubjects;
+            saveSubjects();
+          }
         } else {
           scope.items = defaultSubjects;
           saveSubjects();
         }
-        return scope.addSubject = function() {
+        scope.addSubject = function() {
           var name;
-          console.log("addSubject: [" + scope.newSubjectName + "]");
           if (scope.newSubjectName.match(/^[a-z]+$/i)) {
             name = scope.newSubjectName.toUpperCase();
             scope.items.push({
@@ -50,6 +69,7 @@ SubjectTabs = (function() {
             });
           }
         };
+        return setSubjectFromHash(scope);
       }
     };
   }

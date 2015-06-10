@@ -1,10 +1,19 @@
 
 defaultSubjects = [
+    { name: 'All', showAll: true }
     { name: 'ELE' }
     { name: 'SEM2'}
     { name: 'ZPR' }
     { name: 'TBO' }
 ]
+
+setSubjectFromHash = (scope) ->
+    selectableItems = scope.items.slice(1)
+    matchingHash = location.href.match(/#([^#]+)$/) 
+    currentHash = matchingHash?[1]
+    matchingItem = selectableItems.filter((x) -> x.name is currentHash)[0]
+    scope.selected = matchingItem or scope.items[0]
+        
 
 class SubjectTabs extends Directive
     constructor: -> 
@@ -19,19 +28,21 @@ class SubjectTabs extends Directive
                 
                 saveSubjects = ->
                     localStorage.subjects = angular.toJson(scope.items)
-                    # TODO: sync with server
                 
                 scope.select = (item) ->
                     scope.selected = item
                 
-                if localStorage.subjects
+                if localStorage.subjects 
                     scope.items = JSON.parse(localStorage.subjects)
+                    #temp migration fix
+                    if scope.items.filter((x) -> x.showAll).length is 0
+                        scope.items = defaultSubjects
+                        saveSubjects()
                 else 
                     scope.items = defaultSubjects
                     saveSubjects()
                 
                 scope.addSubject = ->
-                    console.log "addSubject: [#{scope.newSubjectName}]"
                     if scope.newSubjectName.match(/^[a-z]+$/i)
                         name = scope.newSubjectName.toUpperCase()
                         scope.items.push {name}
@@ -39,4 +50,6 @@ class SubjectTabs extends Directive
                         scope.newSubjectName = undefined
                         setTimeout () -> 
                             $('#quick-add-subject-dialog').modal('toggle')
+                            
+                setSubjectFromHash(scope)
         }

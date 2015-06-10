@@ -23,7 +23,7 @@ Layout = (function() {
               edit: true
             }
           };
-          scope.allNotes.push(newNote);
+          scope.allNotes.splice(0, 0, newNote);
           return scope.currentNote = newNote;
         };
       }

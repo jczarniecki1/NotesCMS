@@ -35,7 +35,11 @@ NotePreview = (function() {
           });
         };
         return scope.toggleEditMode = function(item) {
-          return item.flags.edit = !item.flags.edit;
+          var index;
+          item.flags.edit = !item.flags.edit;
+          index = scope.items.indexOf(scope.item);
+          scope.items.splice(index, 1);
+          return scope.items.splice(0, 0, item);
         };
       }
     };

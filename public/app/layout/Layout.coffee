@@ -20,6 +20,6 @@ class Layout extends Directive
 							published: false
 							edit: true
 					
-					scope.allNotes.push newNote
+					scope.allNotes.splice 0, 0, newNote
 					scope.currentNote = newNote
 		}

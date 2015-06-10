@@ -29,14 +29,15 @@ class NotePreview extends Directive
 					
 				scope.removeCurrentItem = ->
 					index = scope.items.indexOf(scope.item)
-					scope.items.splice(index, 1)
+					scope.items.splice index, 1
 					nextIndex = if index < scope.items.length then index else index - 1
 					scope.item = scope.items[nextIndex]
 					setTimeout () -> $('#remove-dialog').modal('toggle')
 					# TODO: save in background
-					
 				
 				scope.toggleEditMode = (item) ->
 					item.flags.edit = !item.flags.edit
-
+					index = scope.items.indexOf(scope.item)
+					scope.items.splice index, 1
+					scope.items.splice 0, 0, item
 		}

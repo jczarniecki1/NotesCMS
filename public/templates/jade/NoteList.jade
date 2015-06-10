@@ -1,17 +1,17 @@
 .list-group
-	//.mdi-content-add
 	.list-group-item(
-			ng-repeat="item in items"
+			ng-repeat="item in items | filter: bySubject"
 			ng-click="select(item)"
 			ng-class="{ 'selected': item === selected }"
 		)
 		.row-action-primary
 		
-			i.mdi-action-settings.mdi-lg(ng-if="item.flags.owned")
+			i.mdi-action-settings.mdi-lg(ng-if="item.flags.owned && !item.flags.edit")
 			i.mdi-content-forward.mdi-lg(ng-if="!item.flags.done && !item.flags.owned")
 			i.mdi-navigation-check.mdi-lg(ng-if="item.flags.done")
+			i.mdi-editor-mode-edit.mdi-lg(ng-if="item.flags.edit")
 		
-		.row-content 
+		.row-content
 		
 			.list-group-item-heading
 				i.mdi-action-grade(ng-if="item.flags.starred")

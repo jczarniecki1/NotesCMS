@@ -6,14 +6,14 @@ getParagraph = ->
         .replace(/work/,'<strong>work</strong>')
         .replace(/programming/,'<span style="color: blue;">programming</span>')
     
-subjects = ['JPA', 'TBD', 'TSA', 'IAB', 'ELE', 'GUI', 'ABC', 'KOR', 'ZAP', 'JFA']
+subjects = ['JPA', 'TBO', 'TSA', 'IAB', 'ELE', 'KOR', 'ZPR', 'SEM2']
 types = ['Project', 'Lecture', 'Exam', 'Exercises']
 fakeNote = ->
     window.__lastId or= 1 
     return {
         id: window.__lastId++
         title: [1..5].map(-> words[randomIndex()]).join(' ') 
-        subject: subjects[randomIndex()]
+        subject: subjects[randomIndex()%8]
         subjectType: types[randomIndex()%4]
         content: '<h4>Lorem ipsum...</h4>' + "<p>#{getParagraph()}<p>" + "<p>#{getParagraph()}<p>"
         created: '2015-02-23'
@@ -40,6 +40,7 @@ class NoteList extends Directive
             scope: {
                 items: '='
                 selected: '='
+                subject: '='
             }
             link: (scope) ->
                 scope.items = [
@@ -56,4 +57,9 @@ class NoteList extends Directive
                 scope.select = (item) ->
                     scope.selected = item
                     
+                scope.bySubject = (item) -> 
+                    if scope.subject? and !scope.subject.showAll 
+                        item.subject is scope.subject.name or item.flags.edit 
+                    else 
+                        true
         }
