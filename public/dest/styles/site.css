@@ -64,6 +64,9 @@ note-list .list-group > .list-group-item {
     z-index: 1; }
     note-list .list-group > .list-group-item.selected .row-action-primary {
       padding-right: 1px; }
+  note-list .list-group > .list-group-item.no-items .list-group-item-heading {
+    color: #999;
+    font-style: italic; }
   note-list .list-group > .list-group-item .row-content {
     min-height: 55px; }
   note-list .list-group > .list-group-item .list-group-item-heading {

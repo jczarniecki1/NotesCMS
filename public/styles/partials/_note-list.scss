@@ -16,6 +16,13 @@ note-list {
 			}
 		}
 		
+		&.no-items {
+			.list-group-item-heading {
+				color: #999;
+				font-style: italic; 
+			}
+		}
+		
 		.row-content {
 			min-height: $note-listitem-height;
 		}

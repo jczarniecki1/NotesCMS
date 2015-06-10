@@ -1,4 +1,11 @@
 .list-group
+	.list-group-item.no-items(ng-if="!items.filter(itemsFilter).length")
+		.row-action-primary
+		// i.mdi-editor-mode-edit.mdi-lg(ng-if="item.flags.edit")
+		.row-content
+			.list-group-item-heading Sorry, no items here
+			
+			
 	.list-group-item(
 			ng-repeat="item in items | filter: itemsFilter | orderBy: '[flags.edit,-flags.starred,starredOrderValue,createdDate]'"
 			ng-click="select(item)"
