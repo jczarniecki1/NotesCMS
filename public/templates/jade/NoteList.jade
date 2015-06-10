@@ -7,7 +7,7 @@
 			
 			
 	.list-group-item(
-			ng-repeat="item in items | filter: itemsFilter | orderBy: '[flags.edit,-flags.starred,starredOrderValue,createdDate]'"
+			ng-repeat="item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'"
 			ng-click="select(item)"
 			ng-class="{ 'selected': item === selected }"
 		)
