@@ -11,12 +11,13 @@ Layout = (function() {
           scope.inverted = !scope.inverted;
           return localStorage.inverted = scope.inverted;
         };
-        return scope.goAddNote = function() {
+        scope.goAddNote = function() {
           var newNote;
           newNote = {
             title: 'Untitled',
             subject: '???',
             subjectType: '???',
+            createdDate: new Date(),
             flags: {
               owned: true,
               published: false,
@@ -25,6 +26,9 @@ Layout = (function() {
           };
           scope.allNotes.splice(0, 0, newNote);
           return scope.currentNote = newNote;
+        };
+        return scope.goStarred = function() {
+          return scope.filterFavourites = !scope.filterFavourites;
         };
       }
     };

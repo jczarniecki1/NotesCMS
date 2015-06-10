@@ -14,6 +14,7 @@ class Layout extends Directive
 						title: 'Untitled'
 						subject: '???'
 						subjectType: '???'
+						createdDate: new Date()
         
 						flags:
 							owned: true
@@ -22,4 +23,7 @@ class Layout extends Directive
 					
 					scope.allNotes.splice 0, 0, newNote
 					scope.currentNote = newNote
+					
+				scope.goStarred = ->
+					scope.filterFavourites = !scope.filterFavourites
 		}

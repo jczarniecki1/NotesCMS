@@ -11,12 +11,21 @@ NotePreview = (function() {
         item: '='
       },
       link: function(scope) {
+        var setFirst;
+        setFirst = function(item) {
+          var index;
+          index = scope.items.indexOf(item);
+          scope.items.splice(index, 1);
+          return scope.items.splice(0, 0, item);
+        };
         scope.requestMessage = 'Seem that this note is outdated...';
         scope.toggleDone = function(item) {
           return item.flags.done = !item.flags.done;
         };
         scope.toggleStarred = function(item) {
-          return item.flags.starred = !item.flags.starred;
+          item.starredDate = !item.starredDate ? new Date() : void 0;
+          item.starredOrderValue = item.starredDate ? Number.MAX_SAFE_INTEGER - item.starredDate : void 0;
+          return item.starred = item.starredDate != null;
         };
         scope.togglePublished = function(item) {
           return item.flags.published = !item.flags.published;
@@ -35,11 +44,8 @@ NotePreview = (function() {
           });
         };
         return scope.toggleEditMode = function(item) {
-          var index;
           item.flags.edit = !item.flags.edit;
-          index = scope.items.indexOf(scope.item);
-          scope.items.splice(index, 1);
-          return scope.items.splice(0, 0, item);
+          return setFirst(item);
         };
       }
     };

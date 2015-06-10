@@ -1,6 +1,9 @@
 .page
     .toolbar-top
-        .btn.btn-default.mdi-2x.mdi-action-stars(ng-click="goStarred()")
+        .btn.mdi-2x.mdi-action-stars(
+            ng-click="goStarred()"
+            ng-class="{'btn-default':!filterFavourites, 'btn-primary':filterFavourites}"
+        )
         .btn.btn-default.mdi-2x.mdi-action-turned-in(ng-click="goReadLater()")
         .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="goSearch()")
         .btn.btn-default.mdi-2x.mdi-content-add(ng-click="goAddNote()")
@@ -17,6 +20,7 @@
             items="allNotes"
             subject="currentSubject"
             selected="currentNote"
+            filter-favourites="filterFavourites"
         )
         note-preview(
             items="allNotes"

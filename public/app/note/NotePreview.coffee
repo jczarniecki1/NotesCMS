@@ -10,6 +10,11 @@ class NotePreview extends Directive
 			}
 			link: (scope) ->
 				
+				setFirst = (item) ->
+					index = scope.items.indexOf(item)
+					scope.items.splice index, 1
+					scope.items.splice 0, 0, item
+				
 				scope.requestMessage = 'Seem that this note is outdated...'
 				
 				scope.toggleDone = (item) ->
@@ -17,7 +22,9 @@ class NotePreview extends Directive
 					# TODO: save in background
 					
 				scope.toggleStarred = (item) ->
-					item.flags.starred = !item.flags.starred
+					item.starredDate = unless item.starredDate then new Date() else undefined
+					item.starredOrderValue = if item.starredDate then (Number.MAX_SAFE_INTEGER - item.starredDate) else undefined
+					item.starred = item.starredDate?
 					# TODO: save in background
 
 				scope.togglePublished = (item) ->
@@ -37,7 +44,5 @@ class NotePreview extends Directive
 				
 				scope.toggleEditMode = (item) ->
 					item.flags.edit = !item.flags.edit
-					index = scope.items.indexOf(scope.item)
-					scope.items.splice index, 1
-					scope.items.splice 0, 0, item
+					setFirst item
 		}
