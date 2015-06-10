@@ -4,7 +4,10 @@
             ng-click="goStarred()"
             ng-class="{'btn-default':!filterFavourites, 'btn-primary':filterFavourites}"
         )
-        .btn.btn-default.mdi-2x.mdi-action-turned-in(ng-click="goReadLater()")
+        .btn.mdi-2x.mdi-action-turned-in(
+            ng-click="goReadLater()"
+            ng-class="{'btn-default':!filterBookmarks, 'btn-primary':filterBookmarks}"
+        )
         .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="goSearch()")
         .btn.btn-default.mdi-2x.mdi-content-add(ng-click="goAddNote()")
         
@@ -21,6 +24,7 @@
             subject="currentSubject"
             selected="currentNote"
             filter-favourites="filterFavourites"
+            filter-bookmarks="filterBookmarks"
         )
         note-preview(
             items="allNotes"

@@ -17,11 +17,11 @@ fakeNote = ->
         subjectType: types[randomIndex()%4]
         content: '<h4>Lorem ipsum...</h4>' + "<p>#{getParagraph()}<p>" + "<p>#{getParagraph()}<p>"
         createdDate: new Date()
-        starred: false
         flags:
             readLater: false
             done: false
             owned: (randomIndex() % 2 is 0)
+            starred: false
         author:
             username: 'John Doe'
             group: '2015_online_db'
@@ -41,6 +41,7 @@ class NoteList extends Directive
                 selected: '='
                 subject: '='
                 filterFavourites: '='
+                filterBookmarks: '='
             }
             link: (scope) ->
                 scope.items = [
@@ -58,8 +59,10 @@ class NoteList extends Directive
                     scope.selected = item
                     
                 scope.itemsFilter = (item) ->
-                    console.log scope.filterFavourites
-                    if scope.filterFavourites and !item.starred
+                    if scope.filterFavourites and !item.flags.starred
+                        return false
+                        
+                    if scope.filterBookmarks and !item.flags.readLater
                         return false
                      
                     if scope.subject? and !scope.subject.showAll 

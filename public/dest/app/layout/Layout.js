@@ -27,8 +27,13 @@ Layout = (function() {
           scope.allNotes.splice(0, 0, newNote);
           return scope.currentNote = newNote;
         };
-        return scope.goStarred = function() {
-          return scope.filterFavourites = !scope.filterFavourites;
+        scope.goStarred = function() {
+          scope.filterFavourites = !scope.filterFavourites;
+          return scope.filterBookmarks = false;
+        };
+        return scope.goReadLater = function() {
+          scope.filterBookmarks = !scope.filterBookmarks;
+          return scope.filterFavourites = false;
         };
       }
     };

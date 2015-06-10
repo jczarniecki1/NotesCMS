@@ -26,4 +26,9 @@ class Layout extends Directive
 					
 				scope.goStarred = ->
 					scope.filterFavourites = !scope.filterFavourites
+					scope.filterBookmarks = false
+										
+				scope.goReadLater = ->
+					scope.filterBookmarks = !scope.filterBookmarks
+					scope.filterFavourites = false					
 		}

@@ -32,11 +32,11 @@ fakeNote = function() {
     subjectType: types[randomIndex() % 4],
     content: '<h4>Lorem ipsum...</h4>' + ("<p>" + (getParagraph()) + "<p>") + ("<p>" + (getParagraph()) + "<p>"),
     createdDate: new Date(),
-    starred: false,
     flags: {
       readLater: false,
       done: false,
-      owned: randomIndex() % 2 === 0
+      owned: randomIndex() % 2 === 0,
+      starred: false
     },
     author: {
       username: 'John Doe',
@@ -58,7 +58,8 @@ NoteList = (function() {
         items: '=',
         selected: '=',
         subject: '=',
-        filterFavourites: '='
+        filterFavourites: '=',
+        filterBookmarks: '='
       },
       link: function(scope) {
         scope.items = [fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote()];
@@ -66,8 +67,10 @@ NoteList = (function() {
           return scope.selected = item;
         };
         return scope.itemsFilter = function(item) {
-          console.log(scope.filterFavourites);
-          if (scope.filterFavourites && !item.starred) {
+          if (scope.filterFavourites && !item.flags.starred) {
+            return false;
+          }
+          if (scope.filterBookmarks && !item.flags.readLater) {
             return false;
           }
           if ((scope.subject != null) && !scope.subject.showAll) {

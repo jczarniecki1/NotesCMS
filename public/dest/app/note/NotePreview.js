@@ -25,7 +25,7 @@ NotePreview = (function() {
         scope.toggleStarred = function(item) {
           item.starredDate = !item.starredDate ? new Date() : void 0;
           item.starredOrderValue = item.starredDate ? Number.MAX_SAFE_INTEGER - item.starredDate : void 0;
-          return item.starred = item.starredDate != null;
+          return item.flags.starred = item.starredDate != null;
         };
         scope.togglePublished = function(item) {
           return item.flags.published = !item.flags.published;

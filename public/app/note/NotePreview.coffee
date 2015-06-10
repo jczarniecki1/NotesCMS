@@ -24,7 +24,7 @@ class NotePreview extends Directive
 				scope.toggleStarred = (item) ->
 					item.starredDate = unless item.starredDate then new Date() else undefined
 					item.starredOrderValue = if item.starredDate then (Number.MAX_SAFE_INTEGER - item.starredDate) else undefined
-					item.starred = item.starredDate?
+					item.flags.starred = item.starredDate?
 					# TODO: save in background
 
 				scope.togglePublished = (item) ->

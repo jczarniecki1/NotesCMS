@@ -1,6 +1,6 @@
 .list-group
 	.list-group-item(
-			ng-repeat="item in items | filter: itemsFilter | orderBy: '[flags.edit,-starred,starredOrderValue,createdDate]'"
+			ng-repeat="item in items | filter: itemsFilter | orderBy: '[flags.edit,-flags.starred,starredOrderValue,createdDate]'"
 			ng-click="select(item)"
 			ng-class="{ 'selected': item === selected }"
 		)
@@ -14,6 +14,7 @@
 		.row-content
 		
 			.list-group-item-heading
-				i.mdi-action-grade(ng-if="item.starredDate")
+				i.mdi-action-grade(ng-if="item.flags.starred")
+				i.mdi-action-turned-in(ng-if="item.flags.readLater")
 				| {{ item.title }}
 			.list-group-item-text {{ item.subject }} | {{ item.subjectType }}
