@@ -11,13 +11,6 @@ NotePreview = (function() {
         item: '='
       },
       link: function(scope) {
-        var setFirst;
-        setFirst = function(item) {
-          var index;
-          index = scope.items.indexOf(item);
-          scope.items.splice(index, 1);
-          return scope.items.splice(0, 0, item);
-        };
         scope.requestMessage = 'Seem that this note is outdated...';
         scope.toggleDone = function(item) {
           return item.flags.done = !item.flags.done;
@@ -44,8 +37,7 @@ NotePreview = (function() {
           });
         };
         return scope.toggleEditMode = function(item) {
-          item.flags.edit = !item.flags.edit;
-          return setFirst(item);
+          return item.flags.edit = !item.flags.edit;
         };
       }
     };

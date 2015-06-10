@@ -1,0 +1,27 @@
+form.horizontal-form.user-profile
+	br
+	.form-group
+		label.col-lg-2.control-label(for='title', autofocus) Username
+		.col-lg-10
+			input#title.form-control(type="text", ng-model="user.username")
+	.form-group
+		label.col-lg-2.control-label(for='group', autofocus) My group
+		.col-lg-10
+			input#group.form-control(type="text", ng-model="user.group")
+	.form-group
+		label.col-lg-2.control-label(for='enabled', autofocus) Show my notes everywhere
+		.col-lg-10
+			input#enabled.form-control(type="checkbox", ng-model="user.enabled")
+			
+	.form-group(ng-if="subjectsTags")
+		label.col-lg-2.control-label(for='subjects', autofocus) My subjects
+		.col-lg-10
+			// input#subjects.form-control(type="text", ng-model="user.subjects")
+			tagsinput(
+			    tagsinput-id="subjectsTags.tagsinputId"
+			    init-tags="subjectsTags.initTags"
+			    maxtags="subjectsTags.maxTags"
+			    maxlength="subjectsTags.maxLength"
+			)
+			
+			

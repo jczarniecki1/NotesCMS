@@ -122,4 +122,38 @@ text-angular .btn-toolbar > .btn-group {
       padding-top: 0;
       margin-top: -4px; }
 
+.user-profile input[type="checkbox"] {
+  width: 24px; }
+
+.angularjs-bootstrap-tagsinput [data-role=tags] {
+  margin-left: 2px;
+  overflow-y: auto;
+  display: inline; }
+  .angularjs-bootstrap-tagsinput [data-role=tags] [data-role=tag] {
+    float: left;
+    margin: 3px 2px 0 0;
+    font-size: 100%; }
+  .angularjs-bootstrap-tagsinput [data-role=tags] [data-role=remove] {
+    margin-left: 3px;
+    cursor: pointer; }
+  .angularjs-bootstrap-tagsinput [data-role=tags] [data-role=remove]:after {
+    padding: 0;
+    content: "x"; }
+  .angularjs-bootstrap-tagsinput [data-role=tags] [data-role=remove]:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 5px 2px rgba(0, 0, 0, 0.05); }
+  .angularjs-bootstrap-tagsinput [data-role=tags] [data-role=remove]:hover:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
+.angularjs-bootstrap-tagsinput [data-role=tagsinput-message] {
+  display: none;
+  padding: 0 5px;
+  margin-top: 5px;
+  color: orange; }
+.angularjs-bootstrap-tagsinput .tagsinput {
+  display: inline-block; }
+.angularjs-bootstrap-tagsinput .tagsinput [data-role=tagsinput]:focus {
+  border: none;
+  box-shadow: none; }
+.angularjs-bootstrap-tagsinput .tagsinput [data-role=tagsinput].tagsinput-invalid {
+  color: #ff0000; }
+
 /*# sourceMappingURL=site.css.map */

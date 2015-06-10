@@ -2,7 +2,7 @@ var App, AppConfig, AppInit;
 
 App = (function() {
   function App() {
-    return ['ngRoute', 'textAngular'];
+    return ['ngRoute', 'textAngular', 'angularjs.bootstrap.tagsinput.template', 'angularjs.bootstrap.tagsinput'];
   }
 
   return App;

@@ -1,21 +1,24 @@
 .page
     .toolbar-top
         .btn.mdi-2x.mdi-action-stars(
-            ng-click="goStarred()"
+            ng-click="gotoStarred()"
             ng-class="{'btn-default':!filterFavourites, 'btn-primary':filterFavourites}"
         )
         .btn.mdi-2x.mdi-action-turned-in(
-            ng-click="goReadLater()"
+            ng-click="gotoBookmarks()"
             ng-class="{'btn-default':!filterBookmarks, 'btn-primary':filterBookmarks}"
         )
-        .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="goSearch()")
-        .btn.btn-default.mdi-2x.mdi-content-add(ng-click="goAddNote()")
+        .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="gotoSearch()")
+        .btn.btn-default.mdi-2x.mdi-content-add(ng-click="createNewNote()")
         
     .toolbar-bottom
         .btn.btn-default.mdi-2x.mdi-communication-invert-colors-on(ng-click="invertColors()")
-        .btn.btn-default.mdi-2x.mdi-action-account-box(ng-click="goUserProfile()")
+        .btn.btn-default.mdi-2x.mdi-action-account-box(
+            ng-click="gotoUserProfile()"
+            ng-class="{'btn-default':!showUserProfile, 'btn-primary':showUserProfile}"
+        )
     
-    .content
+    .content(ng-if="!showUserProfile")
         subject-tabs(
             selected="currentSubject"
         )
@@ -25,8 +28,14 @@
             selected="currentNote"
             filter-favourites="filterFavourites"
             filter-bookmarks="filterBookmarks"
+            show-user-notes="user.enabled"
         )
         note-preview(
             items="allNotes"
             item="currentNote"
+        )
+
+    .content(ng-if="showUserProfile")
+        user-profile(
+            user="user"
         )

@@ -42,6 +42,7 @@ class NoteList extends Directive
                 subject: '='
                 filterFavourites: '='
                 filterBookmarks: '='
+                showUserNotes: '='
             }
             link: (scope) ->
                 scope.items = [
@@ -63,6 +64,9 @@ class NoteList extends Directive
                         return false
                         
                     if scope.filterBookmarks and !item.flags.readLater
+                        return false
+                        
+                    if (!scope.showUserNotes) and item.flags.owned
                         return false
                      
                     if scope.subject? and !scope.subject.showAll 

@@ -59,7 +59,8 @@ NoteList = (function() {
         selected: '=',
         subject: '=',
         filterFavourites: '=',
-        filterBookmarks: '='
+        filterBookmarks: '=',
+        showUserNotes: '='
       },
       link: function(scope) {
         scope.items = [fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote(), fakeNote()];
@@ -71,6 +72,9 @@ NoteList = (function() {
             return false;
           }
           if (scope.filterBookmarks && !item.flags.readLater) {
+            return false;
+          }
+          if ((!scope.showUserNotes) && item.flags.owned) {
             return false;
           }
           if ((scope.subject != null) && !scope.subject.showAll) {

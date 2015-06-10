@@ -10,11 +10,6 @@ class NotePreview extends Directive
 			}
 			link: (scope) ->
 				
-				setFirst = (item) ->
-					index = scope.items.indexOf(item)
-					scope.items.splice index, 1
-					scope.items.splice 0, 0, item
-				
 				scope.requestMessage = 'Seem that this note is outdated...'
 				
 				scope.toggleDone = (item) ->
@@ -44,5 +39,4 @@ class NotePreview extends Directive
 				
 				scope.toggleEditMode = (item) ->
 					item.flags.edit = !item.flags.edit
-					setFirst item
 		}

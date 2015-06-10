@@ -1,6 +1,11 @@
 class App extends App
     constructor: ->
-        return ['ngRoute', 'textAngular']
+        return [
+            'ngRoute' 
+            'textAngular'
+            'angularjs.bootstrap.tagsinput.template'
+            'angularjs.bootstrap.tagsinput'
+        ]
 
 class AppConfig extends Config
     constructor: ->
