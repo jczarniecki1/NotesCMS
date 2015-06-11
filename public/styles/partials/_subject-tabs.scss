@@ -1,21 +1,31 @@
 
-.nav-tabs > li {
-	border-bottom: 6px solid rgba(255,255,255,.0);
-	height: $subject-tabs-height;
-	
-	&.active {
-		background-color: rgba(255,255,255,.2);
-		border-bottom: 6px solid rgba(255,255,255,.5);
-		transition: background-color .1s .2s linear, border-color .5s linear;
-	}
-	
-	.add-subject {
-		padding-left: 10px;
-		padding-right: 10px;
-	
-		> i {
-			padding-top: 0;
-			margin-top: -4px;
+.navbar {
+	min-height: $subject-tabs-height;
+	margin-bottom: 0;
+
+	.navbar-nav > li {
+		border-bottom: 6px solid rgba(255,255,255,.0);
+		height: $subject-tabs-height;
+		
+		&.active {
+			background-color: rgba(255,255,255,.2);
+			border-bottom: 6px solid rgba(255,255,255,.5);
+			transition: background-color .1s .2s linear, border-color .5s linear;
+		}
+		
+		> a {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		
+		.add-subject {
+			padding-left: 10px;
+			padding-right: 10px;
+		
+			> i {
+				padding-top: 0;
+				margin-top: -4px;
+			}
 		}
 	}
 }

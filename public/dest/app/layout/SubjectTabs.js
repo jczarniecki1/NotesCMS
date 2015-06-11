@@ -33,7 +33,8 @@ SubjectTabs = (function() {
       transclude: true,
       templateUrl: '/templates/html/SubjectTabs.html',
       scope: {
-        selected: '='
+        selected: '=',
+        theme: '='
       },
       link: function(scope) {
         var saveSubjects;

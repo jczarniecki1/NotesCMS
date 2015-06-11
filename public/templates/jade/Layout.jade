@@ -1,26 +1,27 @@
 .page
     .toolbar-top
-        .btn.mdi-2x.mdi-action-stars(
+        div(
             ng-click="gotoStarred()"
-            ng-class="{'btn-default':!filterFavourites, 'btn-primary':filterFavourites}"
+            class="btn btn-default mdi-2x mdi-action-stars {{ filterFavourites ? ('btn-material-' + user.theme) : '' }}"
         )
-        .btn.mdi-2x.mdi-action-turned-in(
+        div(
             ng-click="gotoBookmarks()"
-            ng-class="{'btn-default':!filterBookmarks, 'btn-primary':filterBookmarks}"
+            class="btn btn-default mdi-2x mdi-action-turned-in {{ filterBookmarks ? ('btn-material-' + user.theme) : '' }}"
         )
         .btn.btn-default.mdi-2x.mdi-action-pageview(ng-click="gotoSearch()")
         .btn.btn-default.mdi-2x.mdi-content-add(ng-click="createNewNote()")
         
     .toolbar-bottom
         .btn.btn-default.mdi-2x.mdi-communication-invert-colors-on(ng-click="invertColors()")
-        .btn.btn-default.mdi-2x.mdi-action-account-box(
+        div(
             ng-click="gotoUserProfile()"
-            ng-class="{'btn-default':!showUserProfile, 'btn-primary':showUserProfile}"
+            class="btn btn-default mdi-2x mdi-action-account-box {{ showUserProfile ? ('btn-material-' + user.theme) : '' }}"
         )
     
     .content(ng-if="!showUserProfile")
         subject-tabs(
             selected="currentSubject"
+            theme="user.theme"
         )
         note-list(
             items="allNotes"

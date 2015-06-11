@@ -1,27 +1,36 @@
 form.horizontal-form.user-profile
 	br
-	.form-group
-		label.col-lg-2.control-label(for='title', autofocus) Username
+	.row.form-group
+		label.col-lg-2.control-label(for='title') Username
 		.col-lg-10
-			input#title.form-control(type="text", ng-model="user.username")
-	.form-group
-		label.col-lg-2.control-label(for='group', autofocus) My group
+			input#title.form-control(type='text', ng-model='user.username')
+	.row.form-group
+		label.col-lg-2.control-label(for='group') My group
 		.col-lg-10
-			input#group.form-control(type="text", ng-model="user.group")
-	.form-group
-		label.col-lg-2.control-label(for='enabled', autofocus) Show my notes everywhere
+			input#group.form-control(type='text', ng-model='user.group')
+	.row.form-group
+		label.col-lg-2.control-label(for='enabled') Show my notes everywhere
 		.col-lg-10
-			input#enabled.form-control(type="checkbox", ng-model="user.enabled")
-			
-	.form-group(ng-if="subjectsTags")
-		label.col-lg-2.control-label(for='subjects', autofocus) My subjects
+			input#enabled.form-control(type='checkbox', ng-model='user.enabled')
+		
+	.row.form-group(ng-if='subjectsTags')
+		label.col-lg-2.control-label(for='subjects') My subjects
 		.col-lg-10
-			// input#subjects.form-control(type="text", ng-model="user.subjects")
+			// input#subjects.form-control(type='text', ng-model='user.subjects')
 			tagsinput(
-			    tagsinput-id="subjectsTags.tagsinputId"
-			    init-tags="subjectsTags.initTags"
-			    maxtags="subjectsTags.maxTags"
-			    maxlength="subjectsTags.maxLength"
+			    tagsinput-id='subjectsTags.tagsinputId'
+			    init-tags='subjectsTags.initTags'
+			    maxtags='subjectsTags.maxTags'
+			    maxlength='subjectsTags.maxLength'
 			)
 			
+	.row.form-group
+		label.col-lg-2.control-label Theme
+		.col-lg-10.theme-selector
+			.btn.btn-xs.btn-default(
+					ng-repeat='color in colors'
+					ng-class='{ "active": color === user.theme }'
+					ng-click='selectTheme(color)'
+				)
+				i(class='mdi-av-stop mdi-material-{{ color }}')
 			

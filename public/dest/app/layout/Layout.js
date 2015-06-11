@@ -4,7 +4,8 @@ fakeUser = function() {
   return {
     username: 'John Doe',
     group: '2015_online_db',
-    enabled: true
+    enabled: true,
+    theme: localStorage.theme || 'primary'
   };
 };
 

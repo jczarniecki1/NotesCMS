@@ -3,6 +3,7 @@ fakeUser = ->
         username: 'John Doe'
         group: '2015_online_db'
         enabled: true
+        theme: localStorage.theme or 'primary'
 	}
 
 randomIndex = -> Math.floor(Math.random() * 9.9) 

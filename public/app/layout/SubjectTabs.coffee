@@ -22,7 +22,8 @@ class SubjectTabs extends Directive
             transclude: true
             templateUrl: '/templates/html/SubjectTabs.html'
             scope: {
-                selected: '='
+                selected: '=',
+                theme: '='
             }
             link: (scope) ->
                 

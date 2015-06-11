@@ -19,6 +19,9 @@ NoteList = (function() {
           return scope.selected = item;
         };
         return scope.itemsFilter = function(item) {
+          if (item.flags.edit) {
+            return true;
+          }
           if (scope.filterFavourites && !item.flags.starred) {
             return false;
           }
@@ -29,7 +32,7 @@ NoteList = (function() {
             return false;
           }
           if ((scope.subject != null) && !scope.subject.showAll) {
-            return item.subject === scope.subject.name || item.flags.edit;
+            return item.subject === scope.subject.name;
           } else {
             return true;
           }

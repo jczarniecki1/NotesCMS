@@ -17,6 +17,9 @@ class NoteList extends Directive
                     scope.selected = item
                     
                 scope.itemsFilter = (item) ->
+                    if item.flags.edit
+                        return true
+                    
                     if scope.filterFavourites and !item.flags.starred
                         return false
                         
@@ -26,8 +29,8 @@ class NoteList extends Directive
                     if (!scope.showUserNotes) and item.flags.owned
                         return false
                      
-                    if scope.subject? and !scope.subject.showAll 
-                        return item.subject is scope.subject.name or item.flags.edit 
+                    if scope.subject? and !scope.subject.showAll
+                        return item.subject is scope.subject.name 
                     else 
                         return true
         }

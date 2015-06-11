@@ -1,30 +1,38 @@
-ul.nav.nav-tabs
-	li(
-		ng-repeat="item in items"
-		ng-click="select(item)"
-		ng-class="{ 'active': item === selected }"
-	)
-		a(href='#{{item.name}}') {{item.name}}
-	li
-		a.add-subject(
-			data-toggle="modal" 
-			data-target="#quick-add-subject-dialog"
-		)
-			i.mdi-content-add
-			
-		.modal#quick-add-subject-dialog
-			.modal-dialog
-				.modal-content
-					.modal-header
-						button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
-						h4.modal-title New subject
-					.modal-body
-						form#quick-add-subject-form(ng-submit="addSubject()")
-							.form-group
-								label.col-lg-2.control-label(for='newSubjectName') Name
-								.col-lg-10
-									input#newSubjectName.form-control(type='textr', ng-model="newSubjectName", required)
-						br
-					.modal-footer
-						button.btn.btn-default(type='button', data-dismiss='modal') Abort
-						input.btn.btn-primary(type='submit', form="quick-add-subject-form" value="Add to my subjects")
+.navbar(class="navbar-material-{{ theme }}")
+	.navbar-header
+		button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+	.navbar-collapse(aria-expanded="false", style="height: 1px;")
+		ul.nav.navbar-nav.navbar-left
+			li(
+				ng-repeat="item in items"
+				ng-click="select(item)"
+				ng-class="{ 'active': item === selected }"
+			)
+				a(href='#{{item.name}}') {{item.name}}
+		ul.nav.navbar-nav.navbar-right
+			li
+				a.add-subject(
+					data-toggle="modal" 
+					data-target="#quick-add-subject-dialog"
+				)
+					i.mdi-content-add
+					
+	.modal#quick-add-subject-dialog
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+					h4.modal-title New subject
+				.modal-body
+					form#quick-add-subject-form(ng-submit="addSubject()")
+						.form-group
+							label.col-lg-2.control-label(for='newSubjectName') Name
+							.col-lg-10
+								input#newSubjectName.form-control(type='textr', ng-model="newSubjectName", required)
+					br
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Abort
+					input.btn.btn-primary(type='submit', form="quick-add-subject-form" value="Add to my subjects")
