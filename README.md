@@ -22,3 +22,11 @@
 	- Type of class
 	- Tags
 - Quick search with autocomplete (from navbar)
+
+### Screenshots
+
+![](screenshots/Browsing.png)
+
+![](screenshots/EditorView.png)
+
+![](screenshots/UserProfile.png)
