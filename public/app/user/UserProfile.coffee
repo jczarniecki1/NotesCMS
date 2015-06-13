@@ -1,3 +1,17 @@
+allColors = []
+allColors.refresh = ->
+
+$ ->
+    $.when $.get("/vendor/bootstrap-material-design/dist/css/material-fullpalette.min.css")
+    .done (response) ->
+        [].splice.apply allColors, [0,0].concat do ->
+            _all = response
+                .match(/.mdi-material-[a-z\-0-9]+,/g)
+                .map (x) -> x.match(/.mdi-material-([a-z\-0-9]+),/)[1]
+            return _all.filter (x, i) -> i is _all.lastIndexOf x
+        try
+            allColors.refresh()
+        
 class UserProfile extends Directive
     constructor: -> 
         return {
@@ -9,7 +23,7 @@ class UserProfile extends Directive
             }
             link: (scope) ->
                 
-                subjects = JSON.parse(localStorage.subjects).map((x) -> x.name).slice(1)
+                subjects = scope.user.subjects.map (x) -> x.name
                 
                 scope.subjectsTags =
                     tagsinputId: '$$$'
@@ -17,22 +31,14 @@ class UserProfile extends Directive
                     maxTags: 10
                     maxLength: 15
                     
-                scope.colors = [
-                    'teal'
-                    'light-blue-300'
-                    'green-100'
-                    'red'
-                ]
+                scope.onSubjectsChange = (data) ->
+                    scope.user.subjects = data.tags.map (x) -> {name:x}
+                    localStorage.subjects = JSON.stringify(scope.user.subjects)
+                    
+                scope.colors = [ 'teal', 'red', 'green', 'blue' ] # initial set
                 
-                $ ->
-                    $.when $.get("/vendor/bootstrap-material-design/dist/css/material-fullpalette.min.css")
-                    .done (response) ->
-                        
-                        allColors = response
-                            .match(/.mdi-material-[a-z\-0-9]+,/g)
-                            .map (x) -> x.match(/.mdi-material-([a-z\-0-9]+),/)[1]
-                        scope.colors = allColors.filter (x, i) -> i is allColors.lastIndexOf x
-                        scope.$apply()
+                allColors.refresh = -> scope.$apply()
+                scope.colors = allColors
                 
                 scope.selectTheme = (color) ->
                     localStorage.theme = scope.user.theme = color
