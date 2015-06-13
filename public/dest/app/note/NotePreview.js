@@ -36,8 +36,11 @@ NotePreview = (function() {
             return $('#remove-dialog').modal('toggle');
           });
         };
-        return scope.toggleEditMode = function(item) {
+        scope.toggleEditMode = function(item) {
           return item.flags.edit = !item.flags.edit;
+        };
+        return scope.print = function() {
+          return window.print();
         };
       }
     };

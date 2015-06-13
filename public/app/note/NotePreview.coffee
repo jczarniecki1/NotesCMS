@@ -1,5 +1,5 @@
 class NotePreview extends Directive
-	constructor: -> 
+	constructor: ->
 		return {
 			restrict: 'E'
 			transclude: true
@@ -9,13 +9,13 @@ class NotePreview extends Directive
 				item: '='
 			}
 			link: (scope) ->
-				
+
 				scope.requestMessage = 'Seem that this note is outdated...'
-				
+
 				scope.toggleDone = (item) ->
 					item.flags.done = !item.flags.done
 					# TODO: save in background
-					
+
 				scope.toggleStarred = (item) ->
 					item.starredDate = unless item.starredDate then new Date() else undefined
 					item.starredOrderValue = if item.starredDate then (Number.MAX_SAFE_INTEGER - item.starredDate) else undefined
@@ -25,10 +25,10 @@ class NotePreview extends Directive
 				scope.togglePublished = (item) ->
 					item.flags.published = !item.flags.published
 					# TODO: save in background
-				
+
 				scope.toggleReadLater = (item) ->
 					item.flags.readLater = !item.flags.readLater
-					
+
 				scope.removeCurrentItem = ->
 					index = scope.items.indexOf(scope.item)
 					scope.items.splice index, 1
@@ -36,7 +36,9 @@ class NotePreview extends Directive
 					scope.item = scope.items[nextIndex]
 					setTimeout () -> $('#remove-dialog').modal('toggle')
 					# TODO: save in background
-				
+
 				scope.toggleEditMode = (item) ->
 					item.flags.edit = !item.flags.edit
+
+				scope.print = -> window.print()
 		}

@@ -14,14 +14,14 @@ form.horizontal-form.user-profile
 			input#enabled.form-control(type='checkbox', ng-model='user.enabled')
 		
 	.row.form-group(ng-if='subjectsTags')
-		label.col-lg-2.control-label(for='subjects') My subjects
+		label.col-lg-2.control-label My subjects
 		.col-lg-10
-			// input#subjects.form-control(type='text', ng-model='user.subjects')
 			tagsinput(
 			    tagsinput-id='subjectsTags.tagsinputId'
 			    init-tags='subjectsTags.initTags'
 			    maxtags='subjectsTags.maxTags'
 			    maxlength='subjectsTags.maxLength'
+				onchanged='onSubjectsChange(data)'
 			)
 			
 	.row.form-group

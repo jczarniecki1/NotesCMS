@@ -24,4 +24,6 @@ note-preview {
 	width: calc(100% - #{$note-list-width});
 	border-left: $std-border;
 	overflow-y: scroll;
+	top: $subject-tabs-height;
+	left: $note-list-width;
 }

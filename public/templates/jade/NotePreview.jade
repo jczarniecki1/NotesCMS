@@ -1,11 +1,16 @@
-.note-preview-content(ng-if="item")
-	h3(ng-if="!item.flags.edit")
-	
+.note-preview-content(
+	ng-if="item"
+	ng-class="{ 'edit-mode': item.flags.edit }"
+)
+	h3.note-title(ng-if="!item.flags.edit")
 		i.starred-title-icon.mdi-action-grade(
 			ng-class="{ 'active': !!item.starredDate }"
 			ng-click="toggleStarred(item)"
 		) 
-		| &nbsp;{{ item.title }}
+		| &nbsp;{{ item.title }}		
+		i.print-note-icon.mdi-action-print(
+			ng-click="print()"
+		) 
 	
 	p(ng-if="!item.flags.edit") {{ item.subject }} | {{ item.subjectType }}
 	p(ng-bind-html="item.content", ng-if="!item.flags.edit")

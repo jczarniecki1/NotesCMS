@@ -1,19 +1,4 @@
-var SubjectTabs, defaultSubjects, setSubjectFromHash;
-
-defaultSubjects = [
-  {
-    name: 'All',
-    showAll: true
-  }, {
-    name: 'ELE'
-  }, {
-    name: 'SEM2'
-  }, {
-    name: 'ZPR'
-  }, {
-    name: 'TBO'
-  }
-];
+var SubjectTabs, setSubjectFromHash;
 
 setSubjectFromHash = function(scope) {
   var currentHash, matchingHash, matchingItem, selectableItems;
@@ -23,7 +8,10 @@ setSubjectFromHash = function(scope) {
   matchingItem = selectableItems.filter(function(x) {
     return x.name === currentHash;
   })[0];
-  return scope.selected = matchingItem || scope.items[0];
+  return scope.selected = matchingItem || {
+    name: 'All',
+    showAll: true
+  };
 };
 
 SubjectTabs = (function() {
@@ -34,28 +22,13 @@ SubjectTabs = (function() {
       templateUrl: '/templates/html/SubjectTabs.html',
       scope: {
         selected: '=',
+        items: '=',
         theme: '='
       },
       link: function(scope) {
-        var saveSubjects;
-        saveSubjects = function() {
-          return localStorage.subjects = angular.toJson(scope.items);
-        };
         scope.select = function(item) {
           return scope.selected = item;
         };
-        if (localStorage.subjects) {
-          scope.items = JSON.parse(localStorage.subjects);
-          if (scope.items.filter(function(x) {
-            return x.showAll;
-          }).length === 0) {
-            scope.items = defaultSubjects;
-            saveSubjects();
-          }
-        } else {
-          scope.items = defaultSubjects;
-          saveSubjects();
-        }
         scope.addSubject = function() {
           var name;
           if (scope.newSubjectName.match(/^[a-z]+$/i)) {
@@ -63,7 +36,6 @@ SubjectTabs = (function() {
             scope.items.push({
               name: name
             });
-            saveSubjects();
             scope.newSubjectName = void 0;
             return setTimeout(function() {
               return $('#quick-add-subject-dialog').modal('toggle');

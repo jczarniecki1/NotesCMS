@@ -1,4 +1,4 @@
-var Layout, fakeNote, fakeUser, getParagraph, randomIndex, subjects, types, words;
+var Layout, defaultSubjects, fakeNote, fakeUser, getParagraph, randomIndex, subjects, types, words;
 
 fakeUser = function() {
   return {
@@ -8,6 +8,18 @@ fakeUser = function() {
     theme: localStorage.theme || 'primary'
   };
 };
+
+defaultSubjects = [
+  {
+    name: 'ELE'
+  }, {
+    name: 'SEM2'
+  }, {
+    name: 'ZPR'
+  }, {
+    name: 'TBO'
+  }
+];
 
 randomIndex = function() {
   return Math.floor(Math.random() * 9.9);
@@ -83,7 +95,6 @@ Layout = (function() {
               edit: true
             }
           };
-          console.log(scope.allNotes);
           scope.allNotes.push(newNote);
           return scope.currentNote = newNote;
         };
@@ -127,7 +138,15 @@ Layout = (function() {
         if (currentHash === 'Bookmarks') {
           scope.filterBookmarks = true;
         }
-        return scope.user = fakeUser();
+        scope.user = fakeUser();
+        scope.$watch('users.subject', function() {
+          return localStorage.subjects = angular.toJson(scope.user.subjects);
+        });
+        if (localStorage.subjects) {
+          return scope.user.subjects = JSON.parse(localStorage.subjects);
+        } else {
+          return scope.user.subjects = defaultSubjects;
+        }
       }
     };
   }
