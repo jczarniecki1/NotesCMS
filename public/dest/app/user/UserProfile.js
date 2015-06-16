@@ -5,7 +5,7 @@ allColors = [];
 allColors.refresh = function() {};
 
 $(function() {
-  return $.when($.get("/vendor/bootstrap-material-design/dist/css/material-fullpalette.min.css")).done(function(response) {
+  return $.when($.get("/vendor/bootstrap-material-design/dist/css/material.min.css")).done(function(response) {
     [].splice.apply(allColors, [0, 0].concat((function() {
       var _all;
       _all = response.match(/.mdi-material-[a-z\-0-9]+,/g).map(function(x) {
@@ -31,7 +31,7 @@ UserProfile = (function() {
         user: '='
       },
       link: function(scope) {
-        var subjects;
+        var options, subjects;
         subjects = scope.user.subjects.map(function(x) {
           return x.name;
         });
@@ -54,6 +54,23 @@ UserProfile = (function() {
           return scope.$apply();
         };
         scope.colors = allColors;
+        options = {};
+        fontFamilyOptions.forEach(function(x, i) {
+          return options[x.name] = i;
+        });
+        scope.fontFamilyOptions = options;
+        setTimeout(function() {
+          return $('.select').dropdown({
+            optionClass: 'withripple',
+            callback: function() {
+              var $d;
+              $d = $('.dropdownjs');
+              $d.find('.fakeinput').val(fontFamilyOptions[scope.user.fontFamily].name);
+              $d.find('li').removeClass('selected');
+              return $d.find("[value='number:" + scope.user.fontFamily + "']").addClass('selected');
+            }
+          });
+        });
         return scope.selectTheme = function(color) {
           return localStorage.theme = scope.user.theme = color;
         };

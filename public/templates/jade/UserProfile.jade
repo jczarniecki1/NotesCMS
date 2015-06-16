@@ -8,11 +8,7 @@ form.horizontal-form.user-profile
 		label.col-lg-2.control-label(for='group') My group
 		.col-lg-10
 			input#group.form-control(type='text', ng-model='user.group')
-	.row.form-group
-		label.col-lg-2.control-label(for='enabled') Show my notes everywhere
-		.col-lg-10
-			input#enabled.form-control(type='checkbox', ng-model='user.enabled')
-		
+
 	.row.form-group(ng-if='subjectsTags')
 		label.col-lg-2.control-label My subjects
 		.col-lg-10
@@ -23,7 +19,22 @@ form.horizontal-form.user-profile
 			    maxlength='subjectsTags.maxLength'
 				onchanged='onSubjectsChange(data)'
 			)
-			
+
+	//- hr
+	//- .row.form-group
+	//- 	label.col-lg-2.control-label(for='enabled') Show my notes everywhere
+	//- 	.col-lg-10
+	//- 		input#enabled.form-control(type='checkbox', ng-model='user.enabled')
+
+	hr
+	.row.form-group
+		label.col-lg-2.control-label(for='fontFamily') Font family
+		.col-lg-10
+			select#fontFamily.select.form-control(
+				ng-model='user.fontFamily'
+				ng-options='i as x for (x,i) in fontFamilyOptions'
+			)
+
 	.row.form-group
 		label.col-lg-2.control-label Theme
 		.col-lg-10.theme-selector
@@ -33,4 +44,3 @@ form.horizontal-form.user-profile
 					ng-click='selectTheme(color)'
 				)
 				i(class='mdi-av-stop mdi-material-{{ color }}')
-			
