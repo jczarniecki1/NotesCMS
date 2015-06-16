@@ -19,6 +19,9 @@ fontFamilyOptions = [
     name: 'Helvetica',
     value: "Helvetica Neue,Helvetica,Arial,sans-serif"
   }, {
+    name: 'Palatino',
+    value: "Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif"
+  }, {
     name: 'Calibri',
     value: "Calibri Light,Calibri,sans-serif"
   }, {
