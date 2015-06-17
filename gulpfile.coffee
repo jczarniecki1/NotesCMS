@@ -28,8 +28,9 @@ gulp.task 'jade', ->
         .pipe gulp.dest 'public'
     gulp.src 'public/templates/**/*.jade'
         .pipe $.jade()
+        .pipe gulp.dest 'public/templates'
         .pipe $.angularTemplatecache
-            module: 'app'
+            module: 'app-templates'
             base: __dirname + '\\public'
         .pipe gulp.dest 'public/dest/app'
 

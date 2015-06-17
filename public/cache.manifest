@@ -33,12 +33,6 @@ CACHE MANIFEST
 /dest/app/note/NotePreview.js
 /dest/app/user/UserProfile.js
 
-/templates/Layout.html
-/templates/NoteList.html
-/templates/NotePreview.html
-/templates/SubjectTabs.html
-/templates/UserProfile.html
-
 /vendor/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff
 /vendor/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff2
 /vendor/bootstrap-material-design/dist/fonts/RobotoDraftMedium.woff
@@ -53,3 +47,6 @@ CACHE MANIFEST
 /vendor/bootstrap-material-design/dist/fonts/Material-Design-Icons.ttf?3ocs8m
 /vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0
 /vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0
+
+NETWORK: 
+*
