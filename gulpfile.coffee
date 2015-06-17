@@ -8,7 +8,7 @@ gulp.task 'coffee', ->
         .pipe $.ngClassify (file) ->
             if file.path.indexOf('admin') isnt -1  # use 'admin' as the appName if 'admin' is found in the file path
                 { appName: 'admin' }
-            else
+            else 
                 { appName: 'app' }
 		.pipe $.coffee { bare: true }
 		.pipe gulp.dest 'public/dest/app'
@@ -28,9 +28,8 @@ gulp.task 'jade', ->
         .pipe gulp.dest 'public'
     gulp.src 'public/templates/**/*.jade'
         .pipe $.jade()
-        .pipe gulp.dest 'public/templates'
         .pipe $.angularTemplatecache
-            module: 'app-templates'
+            module: 'app'
             base: __dirname + '\\public'
         .pipe gulp.dest 'public/dest/app'
 

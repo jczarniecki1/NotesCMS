@@ -5,7 +5,7 @@ NotePreview = (function() {
     return {
       restrict: 'E',
       transclude: true,
-      templateUrl: '/templates/NotePreview.html',
+      templateUrl: 'templates/NotePreview.html',
       scope: {
         items: '=',
         item: '='

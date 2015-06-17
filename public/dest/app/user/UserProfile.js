@@ -26,7 +26,7 @@ UserProfile = (function() {
     return {
       restrict: 'E',
       transclude: true,
-      templateUrl: '/templates/UserProfile.html',
+      templateUrl: 'templates/UserProfile.html',
       scope: {
         user: '='
       },

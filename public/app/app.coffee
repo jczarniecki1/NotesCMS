@@ -1,7 +1,6 @@
 class App extends App
     constructor: ->
         return [
-            'app-templates'
             'textAngular'
             'angularjs.bootstrap.tagsinput.template'
             'angularjs.bootstrap.tagsinput'

@@ -19,7 +19,7 @@ SubjectTabs = (function() {
     return {
       restrict: 'E',
       transclude: true,
-      templateUrl: '/templates/SubjectTabs.html',
+      templateUrl: 'templates/SubjectTabs.html',
       scope: {
         selected: '=',
         items: '=',
