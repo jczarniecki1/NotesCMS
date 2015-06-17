@@ -5,7 +5,7 @@ NoteList = (function() {
     return {
       restrict: 'E',
       transclude: true,
-      templateUrl: '/templates/html/NoteList.html',
+      templateUrl: '/templates/NoteList.html',
       scope: {
         items: '=',
         selected: '=',

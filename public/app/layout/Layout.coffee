@@ -101,7 +101,7 @@ class Layout extends Directive
 		return {
 			restrict: 'E'
 			replace: true
-			templateUrl: 'templates/html/Layout.html'
+			templateUrl: 'templates/Layout.html'
 			link: (scope, element) ->
 				scope.invertColors = ->
 					scope.inverted = !scope.inverted

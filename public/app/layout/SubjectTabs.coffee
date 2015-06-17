@@ -11,7 +11,7 @@ class SubjectTabs extends Directive
         return {
             restrict: 'E'
             transclude: true
-            templateUrl: '/templates/html/SubjectTabs.html'
+            templateUrl: '/templates/SubjectTabs.html'
             scope: {
                 selected: '='
                 items: '='

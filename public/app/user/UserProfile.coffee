@@ -17,7 +17,7 @@ class UserProfile extends Directive
         return {
             restrict: 'E'
             transclude: true
-            templateUrl: '/templates/html/UserProfile.html'
+            templateUrl: '/templates/UserProfile.html'
             scope: {
                 user: '='
             }

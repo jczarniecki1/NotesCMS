@@ -33,11 +33,11 @@ CACHE MANIFEST
 /dest/app/note/NotePreview.js
 /dest/app/user/UserProfile.js
 
-/templates/html/Layout.html
-/templates/html/NoteList.html
-/templates/html/NotePreview.html
-/templates/html/SubjectTabs.html
-/templates/html/UserProfile.html
+/templates/Layout.html
+/templates/NoteList.html
+/templates/NotePreview.html
+/templates/SubjectTabs.html
+/templates/UserProfile.html
 
 /vendor/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff
 /vendor/bootstrap-material-design/dist/fonts/RobotoDraftRegular.woff2

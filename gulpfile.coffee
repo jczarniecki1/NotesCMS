@@ -14,10 +14,11 @@ gulp.task 'coffee', ->
 		.pipe gulp.dest 'public/dest/app'
 		
 
-# gulp.task 'sass', ->
-# 	gulp.src ['src', 'public/styles']
-# 		.pipe $.rubySass { compass: true }
-# 		.pipe gulp.dest 'public/dest/styles'
+gulp.task 'sass', ->
+	gulp.src 'public/styles/**/*.scss'
+		.pipe $.sass(errLogToConsole: true, outputStyle: 'compressed').on 'error', $.sass.logError
+        #.pipe autoprefixer browsers ['last 2 versions'] 
+		.pipe gulp.dest 'public/dest/styles'
 		
 	
 gulp.task 'jade', ->
@@ -25,29 +26,19 @@ gulp.task 'jade', ->
         .pipe $.plumber()
         .pipe $.jade()
         .pipe gulp.dest 'public'
-    gulp.src 'public/templates/jade/**/*.jade'
+    gulp.src 'public/templates/**/*.jade'
         .pipe $.jade()
-        .pipe gulp.dest 'public/templates/html'
-
-
-gulp.task 'templates', ->
-    config =
-        module: 'app'
-        src: 'public/templates/html/**/*.html'
-        dest: 'public/dest/app'
-
-    gulp.src config.src
         .pipe $.angularTemplatecache
-            module: config.module
+            module: 'app'
             base: __dirname + '\\public'
-        .pipe gulp.dest(config.dest)
-  
+        .pipe gulp.dest 'public/dest/app'
+
 
 gulp.task 'watch', ->
-    gulp.watch 'public/app/**/*.coffee'         , ['coffee']
-    gulp.watch 'public/templates/jade/**/*.jade', ['jade']
-    gulp.watch 'public/index.jade'              , ['jade']
-    gulp.watch 'public/templates/html/**/*.html', [ 'templates' ]     
+    gulp.watch 'public/app/**/*.coffee'    , ['coffee']
+    gulp.watch 'public/templates/**/*.jade', ['jade']
+    gulp.watch 'public/index.jade'         , ['jade']
+    gulp.watch 'public/styles/**/*.scss'   , ['sass']
     
 
-gulp.task 'default', ['coffee', 'jade', 'templates']
+gulp.task 'default', ['coffee', 'jade', 'sass']
