@@ -37,7 +37,9 @@ class NoteFactory extends Service
 	getFakeContent: ->
 		if (_lastId is 1)
 			@noteContentGeneratorService.staticFakeContent()
-		else
+		else if (_lastId is 2)
+			@noteContentGeneratorService.staticFakeContentWithImage()
+		else			
 			@noteContentGeneratorService.genericFakeContent()
 
 	fakeUser =

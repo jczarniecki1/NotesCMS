@@ -10,6 +10,11 @@ class NoteContentGenerator extends Service
 
 	genericFakeContent: -> '<h4>Lorem ipsum...</h4>' + "<p>#{getParagraph()}<p>" + "<p>#{getParagraph()}<p>"
 
+	staticFakeContentWithImage: -> '
+	<p><img src="http://a1.dspncdn.com/media/692x/63/35/39/63353989682cef2f15bc6bb87a333527.jpg"><br></p>
+	<p>Found at:&nbsp;<a href="http://www.visual-journal.net/" target=""><u>visual-journal.net</u></a></p>
+	'
+
 	staticFakeContent: -> '
 	<h1>HTTP 2.0<br></h1>
 	<h3>Lack of multiplexing (HTTP 1.1)</h3>

@@ -61,6 +61,8 @@ NoteFactory = (function() {
   NoteFactory.prototype.getFakeContent = function() {
     if (_lastId === 1) {
       return this.noteContentGeneratorService.staticFakeContent();
+    } else if (_lastId === 2) {
+      return this.noteContentGeneratorService.staticFakeContentWithImage();
     } else {
       return this.noteContentGeneratorService.genericFakeContent();
     }
