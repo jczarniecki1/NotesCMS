@@ -12,6 +12,7 @@
 - Basic user profile page
 	- Themes
 - Inverted colors mode
+- Working offline
 
 ### TODO
 

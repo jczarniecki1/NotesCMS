@@ -29,6 +29,8 @@ CACHE MANIFEST
 /dest/app/utils/ErrorHandler.js
 /dest/app/layout/Layout.js
 /dest/app/layout/SubjectTabs.js
+/dest/app/note/NoteContentGenerator.js
+/dest/app/note/NoteFactory.js
 /dest/app/note/NoteList.js
 /dest/app/note/NotePreview.js
 /dest/app/user/UserProfile.js
