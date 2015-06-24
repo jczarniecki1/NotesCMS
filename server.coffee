@@ -1,8 +1,8 @@
-express = require('express');
-compression = require('compression')
-path = require('path')
-app = new express()
+express 	= require 'express'
+compression = require 'compression'
+path 		= require 'path'
 
+app = new express()
 app
 	.use compression()
 	.use express.static path.normalize(__dirname + '/public')

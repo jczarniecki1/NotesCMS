@@ -54,8 +54,10 @@ Layout = (function() {
           scope.inverted = !scope.inverted;
           return localStorage.inverted = scope.inverted;
         };
-        console.log(noteFactoryService);
-        scope.allNotes = [noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote()];
+        scope.allNotes = JSON.parse(localStorage.allNotes || "[]") || [noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote(), noteFactoryService.fakeNote()];
+        scope.$watch('allNotes', function() {
+          return localStorage.allNotes = angular.toJson(scope.allNotes);
+        }, true);
         scope.createNewNote = function() {
           var newNote;
           newNote = {

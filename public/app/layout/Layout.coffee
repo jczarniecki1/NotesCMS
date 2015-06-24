@@ -33,8 +33,8 @@ class Layout extends Directive
 				scope.invertColors = ->
 					scope.inverted = !scope.inverted
 					localStorage.inverted = scope.inverted
-				console.log noteFactoryService
-				scope.allNotes = [
+
+				scope.allNotes = JSON.parse(localStorage.allNotes or "[]") or [
 	                    noteFactoryService.fakeNote()
 	                    noteFactoryService.fakeNote()
 	                    noteFactoryService.fakeNote()
@@ -44,6 +44,10 @@ class Layout extends Directive
 	                    noteFactoryService.fakeNote()
 	                    noteFactoryService.fakeNote()
 	                ]
+
+				scope.$watch 'allNotes', () ->
+				    localStorage.allNotes = angular.toJson scope.allNotes
+				, true # deep
 
 				scope.createNewNote = ->
 					newNote =
