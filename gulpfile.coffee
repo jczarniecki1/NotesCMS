@@ -1,6 +1,7 @@
 require('./bundles')
 
 gulp = require('gulp')
+path = require('path')
 $ = require('gulp-load-plugins')()
 
 
@@ -32,7 +33,7 @@ gulp.task 'jade', ->
         .pipe $.jade()
         .pipe $.angularTemplatecache
             module: 'app'
-            base: __dirname + '\\public'
+            base: path.normalize(__dirname + '/public')
         .pipe gulp.dest 'public/dest/app'
 
 
