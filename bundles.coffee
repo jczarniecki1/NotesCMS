@@ -51,7 +51,7 @@ gulp.task 'bundle-styles', ['sass'], ->
         .pipe $.cssmin()
         .pipe gulp.dest 'public/dest/min'
 
-    gulp.src 'public/vendor/bootstrap-material-design/dist/fonts/*.*'
+    gulp.src 'public/vendor/bootstrap-material-design/dist/fonts/Roboto*.*'
         .pipe gulp.dest 'public/dest/fonts'
 
 
