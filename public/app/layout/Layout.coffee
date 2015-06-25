@@ -6,11 +6,13 @@ defaultSubjects = [
 ]
 
 fontFamilyOptions = [
-	{ name:'Roboto', value: "RobotoDraft,Roboto,Arial,sans-serif" }
-	{ name:'Helvetica', value: "Helvetica Neue,Helvetica,Arial,sans-serif" }
-	{ name:'Palatino', value: "Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif" }
-	{ name:'Calibri', value: "Calibri Light,Calibri,sans-serif" }
-	{ name:'Candara', value: "Candara,sans-serif" }
+	{ name:'Roboto', value: 'RobotoDraft,Roboto,Arial,sans-serif' }
+	{ name:'Helvetica', value: 'Helvetica Neue,Helvetica,Arial,sans-serif' }
+	{ name:'Palatino', value: 'Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif' }
+	{ name:'Calibri', value: 'Calibri Light,Calibri,sans-serif' }
+	{ name:'Candara', value: 'Candara,sans-serif' }
+	{ name:'PT Sans', value: 'PT Sans,sans-serif' }
+	{ name:'Open Sans', value: 'open-sans,sans-serif' }
 ]
 
 defaultFontFamily = 0
@@ -34,7 +36,7 @@ class Layout extends Directive
 					scope.inverted = !scope.inverted
 					localStorage.inverted = scope.inverted
 
-				scope.allNotes = JSON.parse(localStorage.allNotes or "[]") or [
+				scope.allNotes = JSON.parse(localStorage.allNotes or "0") or [
 	                    noteFactoryService.fakeNote()
 	                    noteFactoryService.fakeNote()
 	                    noteFactoryService.fakeNote()
