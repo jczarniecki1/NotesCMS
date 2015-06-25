@@ -4,3 +4,4 @@ public/dest
 .sass-cache
 .settings
 .idea
+deploy.bat

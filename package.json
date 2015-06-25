@@ -34,7 +34,7 @@
     "node": "0.12.x"
   },
   "scripts": {
-    "preinstall": "npm i -g coffee-script bower",
+    "preinstall": "npm i -g coffee-script bower gulp",
     "postinstall": "bower install && gulp",
     "start": "coffee server.coffee"
   }
