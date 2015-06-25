@@ -19,7 +19,7 @@ gulp.task 'bundle-libs', ->
         .pipe $.uglify()
         .pipe gulp.dest 'public/dest/min'
 
-gulp.task 'bundle-app', ['coffee'], ->
+gulp.task 'bundle-app', ['coffee', 'jade'], ->
     gulp.src [
                 'public/dest/app/app.js'
                 'public/dest/app/templates.js'
