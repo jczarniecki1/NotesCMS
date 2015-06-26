@@ -6,15 +6,12 @@ defaultSubjects = [
 ]
 
 fontFamilyOptions = [
-	{ name:'Muli', value: '"Muli",sans-serif' }
-	{ name:'Open Sans', value: '"Open Sans",sans-serif' }
-	{ name:'Raleway', value: '"Raleway",sans-serif' }
-	{ name:'Comfortaa', value: '"Comfortaa",sans-serif' }
-	{ name:'Philosopher', value: '"Philosopher",sans-serif' }
-	{ name:'Helvetica', value: '"Helvetica Neue",Helvetica,Arial,sans-serif' }
-	{ name:'Palatino', value: 'Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif' }
-	{ name:'Calibri', value: 'Calibri Light,Calibri,sans-serif' }
-	{ name:'Candara', value: 'Candara,sans-serif' }
+	{ name: 'Muli', 	   value: 'Muli, sans-serif' }
+	{ name: 'Open Sans',   value: 'Open Sans, sans-serif' }
+	{ name: 'Helvetica',   value: 'Helvetica Neue, Helvetica, Arial, sans-serif' }
+	{ name: 'Philosopher', value: 'Philosopher, serif' }
+	{ name: 'Palatino',    value: 'Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif' }
+	{ name: 'Candara',     value: 'Candara, sans-serif' }
 ]
 
 defaultFontFamily = 0
