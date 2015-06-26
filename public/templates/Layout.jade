@@ -19,6 +19,10 @@
         )
     
     .content(ng-if="!showUserProfile")
+        .banner
+            h1 Ultimate Notepad
+            h2 Take your studies offline
+
         subject-tabs(
             selected="currentSubject"
             items="user.subjects"

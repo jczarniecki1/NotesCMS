@@ -1,3 +1,4 @@
+$banner-height: 120px;
 $toolbar-width: 80px;
 $note-list-width: 400px;
 $note-listitem-height: 55px;
@@ -9,6 +10,7 @@ $std-border: 1px solid $std-border-color;
 $selection-color: rgba(0,0,0,.2);
 
 @import './partials/utils';
+@import './partials/banner';
 @import './partials/toolbar';
 @import './partials/layout';
 @import './partials/note-list';
