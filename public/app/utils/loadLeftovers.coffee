@@ -4,7 +4,7 @@ loadCSS: load a CSS file asynchronously.
 Licensed MIT
 ###
 
-loadCSS = (href, before, media, callback) ->
+window.loadCSS = (href, before, media, callback) ->
     'use strict'
     
     ss = window.document.createElement('link')
@@ -36,5 +36,21 @@ loadCSS = (href, before, media, callback) ->
     return ss
 
 # Load remaining stylesheets
-for url in Leftovers
-    loadCSS url
+if Leftovers.stylesheets?
+    for url in Leftovers.stylesheets
+        loadCSS url
+
+
+# Wait for script loaded with async
+waitFor = (name, callback, initialDelay = 50) ->
+    delay = initialDelay
+    do check = ->
+        setTimeout -> 
+            if window[name] then callback() else check()
+        , delay
+        delay = (delay * 2) % 2000
+        
+# Load remaining callbacks
+if Leftovers.callbacks?
+    for cb in Leftovers.callbacks
+        waitFor cb.require, cb.run, cb.

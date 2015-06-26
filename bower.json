@@ -22,6 +22,7 @@
     "sweetalert": "~1.0.1",
     "textAngular": "~1.4.1",
     "angularjs-bootstrap-tagsinput": "~0.2.0",
-    "dropdown.js": "*"
+    "dropdown.js": "*",
+    "offline": "~0.7.11"
   }
 }

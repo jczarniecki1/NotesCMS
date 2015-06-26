@@ -13,6 +13,7 @@ gulp.task 'bundle-libs', ->
                 'public/vendor/textAngular/dist/textAngular-rangy.min.js'
                 'public/vendor/textAngular/dist/textAngular-sanitize.min.js'
                 'public/vendor/textAngular/dist/textAngular.min.js'
+                'public/vendor/offline/offline.min.js'
             ]
         .pipe $.concat 'libs.min.js'
         .pipe $.ngAnnotate()
@@ -41,7 +42,6 @@ gulp.task 'bundle-styles', ['sass'], ->
     gulp.src [
                 'public/vendor/dropdown.js/jquery.dropdown.css'
                 'public/vendor/bootstrap-material-design/dist/css/ripples.min.css'
-                'public/vendor/bootstrap-material-design/dist/css/roboto.min.css'
                 'public/vendor/sweetalert/dist/sweetalert.css'
                 'public/vendor/angularjs/angular-csp.css'
                 
@@ -50,9 +50,6 @@ gulp.task 'bundle-styles', ['sass'], ->
         .pipe $.concat 'all.min.css'
         .pipe $.cssmin()
         .pipe gulp.dest 'public/dest/min'
-
-    gulp.src 'public/vendor/bootstrap-material-design/dist/fonts/Roboto*.*'
-        .pipe gulp.dest 'public/dest/fonts'
 
 
 gulp.task 'bundle', ['bundle-libs', 'bundle-app', 'bundle-styles']

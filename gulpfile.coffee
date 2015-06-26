@@ -44,4 +44,4 @@ gulp.task 'watch', ->
     gulp.watch 'public/styles/**/*.scss'   , ['sass', 'bundle-styles']
 
 
-gulp.task 'default', ['coffee', 'jade', 'sass', 'bundle']
+gulp.task 'default', ['bundle']

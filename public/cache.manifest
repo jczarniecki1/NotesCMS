@@ -1,4 +1,5 @@
 CACHE MANIFEST
+#rev 1
 /favicon.ico
 
 /vendor/bootstrap/dist/css/bootstrap.min.css
@@ -7,6 +8,8 @@ CACHE MANIFEST
 
 /vendor/font-awesome/css/font-awesome.css
 /vendor/textAngular/dist/textAngular.css
+/vendor/offline/themes/offline-language-english-indicator.css
+/vendor/offline/themes/offline-theme-chrome-indicator.css
 /dest/styles/webfonts.css
 
 /vendor/jquery/dist/jquery.min.js
@@ -15,21 +18,25 @@ CACHE MANIFEST
 /dest/min/app.min.js
 
 /dest/app/utils/loadLeftovers.js
+/vendor/offline/offline.min.js
 
-/dest/fonts/RobotoDraftRegular.woff
-/dest/fonts/RobotoDraftRegular.woff2
-/dest/fonts/RobotoDraftMedium.woff
-/dest/fonts/RobotoDraftMedium.woff2
-/dest/fonts/RobotoDraftBold.woff
-/dest/fonts/RobotoDraftBold.woff2
-/dest/fonts/RobotoDraftItalic.woff
-/dest/fonts/RobotoDraftItalic.woff2
 /vendor/bootstrap-material-design/dist/fonts/Material-Design-Icons.woff
 /vendor/bootstrap-material-design/dist/fonts/Material-Design-Icons.ttf
 /vendor/bootstrap-material-design/dist/fonts/Material-Design-Icons.woff?3ocs8m
 /vendor/bootstrap-material-design/dist/fonts/Material-Design-Icons.ttf?3ocs8m
 /vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0
 /vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0
+
+https://fonts.gstatic.com/s/muli/v7/T-qN9Yh40TTJeenUALkjgg.woff2
+https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2
+https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2
+https://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWFtXRa8TVwTICgirnJhmVJw.woff2
+https://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2
+https://fonts.gstatic.com/s/raleway/v9/JbtMzqLaYbbbCL9X6EvaI_k_vArhqVIZ0nv9q090hN8.woff2
+https://fonts.gstatic.com/s/comfortaa/v7/r_tUZNl0G8xCoOmp_JkSCugdm0LZdjqr5-oayXSOefg.woff2
+https://fonts.gstatic.com/s/comfortaa/v7/fND5XPYKrF2tQDwwfWZJI-gdm0LZdjqr5-oayXSOefg.woff2
+https://fonts.gstatic.com/s/philosopher/v7/napvkewXG9Gqby5vwGHICIlIZu-HDpmDIZMigmsroc4.woff2
+
 
 NETWORK:
 *
