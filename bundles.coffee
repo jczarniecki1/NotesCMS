@@ -40,8 +40,10 @@ gulp.task 'bundle-app', ['coffee', 'jade'], ->
 
 gulp.task 'bundle-styles', ['sass'], ->
     gulp.src [
-                'public/vendor/dropdown.js/jquery.dropdown.css'
+                'public/vendor/bootstrap/dist/css/bootstrap.min.css'
+                'public/vendor/bootstrap-material-design/dist/css/material.min.css'
                 'public/vendor/bootstrap-material-design/dist/css/ripples.min.css'
+                'public/vendor/dropdown.js/jquery.dropdown.css'
                 'public/vendor/sweetalert/dist/sweetalert.css'
                 'public/vendor/angularjs/angular-csp.css'
                 
