@@ -52,6 +52,9 @@ gulp.task 'bundle-styles', ['sass'], ->
         .pipe $.concat 'all.min.css'
         .pipe $.cssmin()
         .pipe gulp.dest 'public/dest/min'
+        
+    gulp.src 'public/vendor/bootstrap-material-design/dist/fonts/Material*.*'
+        .pipe gulp.dest 'public/dest/fonts'
 
 
 gulp.task 'bundle', ['bundle-libs', 'bundle-app', 'bundle-styles']
