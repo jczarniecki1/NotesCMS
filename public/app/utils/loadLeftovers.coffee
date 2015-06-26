@@ -53,4 +53,4 @@ waitFor = (name, callback, initialDelay = 50) ->
 # Load remaining callbacks
 if Leftovers.callbacks?
     for cb in Leftovers.callbacks
-        waitFor cb.require, cb.run, cb.
+        waitFor cb.require, cb.run, cb.delay
