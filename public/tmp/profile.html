@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:8080/#Profile -->
+<html lang="en" ng-app="app" ng-class="{&#39;inverted&#39;: inverted}" class="ng-scope">
+    <!--, manifest="/cache.manifest")-->
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+        </style>
+        <title>NotesCMS</title>
+        <link href="http://localhost:8080/favicon.ico" rel="icon" type="image/x-icon">
+        <!---->
+        <link rel="stylesheet" href="http://localhost:8080/dest/min/all.critical.min.css">
+        <style></style>
+    </head>
+    
+    <body>
+        <div class="main page" inverted="inverted">
+            <div class="toolbar-top">
+                <div ng-click="gotoStarred()" class="btn btn-default mdi-2x mdi-action-stars "></div>
+                <div ng-click="gotoBookmarks()" class="btn btn-default mdi-2x mdi-action-turned-in "></div>
+                <div ng-click="gotoSearch()" class="btn btn-default mdi-2x mdi-action-pageview"></div>
+                <div ng-click="createNewNote()" class="btn btn-default mdi-2x mdi-content-add"></div>
+            </div>
+            <div class="toolbar-bottom">
+                <div ng-click="invertColors()" class="btn btn-default mdi-2x mdi-communication-invert-colors-on"></div>
+                <div ng-click="gotoUserProfile()" class="btn btn-default mdi-2x mdi-action-account-box btn-material-light-green"></div>
+            </div>
+            <!-- ngIf: !showUserProfile -->
+            <!-- ngIf: showUserProfile -->
+            <div ng-if="showUserProfile" class="content ng-scope">
+                <user-profile user="user" class="ng-isolate-scope">
+                    <form class="horizontal-form user-profile ng-pristine ng-valid">
+                        <br>
+                        <div class="row form-group">
+                            <label for="title" class="col-lg-2 control-label">Username</label>
+                            <div class="col-lg-10">
+                                <input id="title" type="text" ng-model="user.username" class="form-control ng-pristine ng-untouched ng-valid">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="group" class="col-lg-2 control-label">My group</label>
+                            <div class="col-lg-10">
+                                <input id="group" type="text" ng-model="user.group" class="form-control ng-pristine ng-untouched ng-valid">
+                            </div>
+                        </div>
+                        <!-- ngIf: subjectsTags -->
+                        <div ng-if="subjectsTags" class="row form-group ng-scope">
+                            <label class="col-lg-2 control-label">My subjects</label>
+                            <div class="col-lg-10">
+                                <div class="angularjs-bootstrap-tagsinput ng-isolate-scope" tagsinput-id="subjectsTags.tagsinputId" init-tags="subjectsTags.initTags"
+                                maxtags="subjectsTags.maxTags" maxlength="subjectsTags.maxLength" onchanged="onSubjectsChange(data)">
+                                    <div data-role="tags">
+                                        <span data-role="tag" class="label label-info">
+                                            <span data-role="value">ZPR</span>
+                                            <span data-role="remove"></span>
+                                        </span>
+                                        <span data-role="tag" class="label label-info">
+                                            <span data-role="value">TBO</span>
+                                            <span data-role="remove"></span>
+                                        </span>
+                                        <span data-role="tag" class="label label-info">
+                                            <span data-role="value">IAB</span>
+                                            <span data-role="remove"></span>
+                                        </span>
+                                        <span data-role="tag" class="label label-info">
+                                            <span data-role="value">ELE</span>
+                                            <span data-role="remove"></span>
+                                        </span>
+                                    </div>
+                                    <div class="tagsinput">
+                                        <input data-role="tagsinput" class="form-control" type="text" maxlength="15">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end ngIf: subjectsTags -->
+                        <hr>
+                        <div class="row form-group">
+                            <label for="fontFamily" class="col-lg-2 control-label">Font family</label>
+                            <div class="col-lg-10">
+                                <select id="fontFamily" ng-model="user.fontFamily" ng-options="i as x for (x,i) in fontFamilyOptions" class="select form-control ng-pristine ng-untouched ng-valid"
+                                data-dropdownjs="true" style="display: none;">
+                                    <option value="number:0" label="Muli" selected="selected">Muli</option>
+                                    <option value="number:1" label="Open Sans">Open Sans</option>
+                                    <option value="number:2" label="Helvetica">Helvetica</option>
+                                    <option value="number:3" label="Philosopher">Philosopher</option>
+                                    <option value="number:4" label="Palatino">Palatino</option>
+                                    <option value="number:5" label="Candara">Candara</option>
+                                </select>
+                                <div class="dropdownjs">
+                                    <input type="text" readonly="" class="fakeinput select form-control ng-pristine ng-untouched ng-valid">
+                                    <ul>
+                                        <li value="number:0" selected="selected" class="selected">Muli</li>
+                                        <li value="number:1">Open Sans</li>
+                                        <li value="number:2">Helvetica</li>
+                                        <li value="number:3">Philosopher</li>
+                                        <li value="number:4">Palatino</li>
+                                        <li value="number:5">Candara</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-lg-2 control-label">Theme</label>
+                            <div class="col-lg-10 theme-selector">
+                                <!-- ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-red"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-pink"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-purple"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-deep-purple"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-indigo"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-blue"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-light-blue"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-cyan"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-teal"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-green"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope active">
+                                    <i class="mdi-av-stop mdi-material-light-green"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-lime"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-yellow"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-amber"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-orange"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-deep-orange"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-brown"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-grey"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                                <div ng-repeat="color in colors" ng-class="{ &quot;active&quot;: color === user.theme }" ng-click="selectTheme(color)" class="btn btn-xs btn-default ng-scope">
+                                    <i class="mdi-av-stop mdi-material-blue-grey"></i>
+                                </div>
+                                <!-- end ngRepeat: color in colors -->
+                            </div>
+                        </div>
+                    </form>
+                </user-profile>
+            </div>
+            <!-- end ngIf: showUserProfile -->
+        </div>
+        <input id="textAngular-editableFix-010203040506070809" class="ta-hidden-input" unselectable="on" tabindex="-1">
+        <div class="offline-ui offline-ui-up">
+            <div class="offline-ui-content"></div>
+            <a href="" class="offline-ui-retry"></a>
+        </div>
+    </body>
+
+</html>

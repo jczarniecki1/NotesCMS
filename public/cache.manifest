@@ -1,15 +1,12 @@
 CACHE MANIFEST
-#rev 1
+#rev 2
 /favicon.ico
 
 /vendor/bootstrap/dist/css/bootstrap.min.css
 /vendor/bootstrap-material-design/dist/css/material.min.css
-/dest/min/all.min.css
+/dest/min/all.critical.min.css
 
-/vendor/font-awesome/css/font-awesome.css
-/vendor/textAngular/dist/textAngular.css
-/vendor/offline/themes/offline-language-english-indicator.css
-/vendor/offline/themes/offline-theme-chrome-indicator.css
+/dest/min/all.min.css
 /dest/styles/webfonts.css
 
 /vendor/jquery/dist/jquery.min.js
@@ -25,8 +22,8 @@ CACHE MANIFEST
 /dest/fonts/Material-Design-Icons.woff?3ocs8m
 /dest/fonts/Material-Design-Icons.ttf?3ocs8m
 
-/vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0
-/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0
+/dest/fonts/fontawesome-webfont.woff?v=4.3.0
+/dest/fonts/fontawesome-webfont.woff2?v=4.3.0
 
 https://fonts.gstatic.com/s/muli/v7/T-qN9Yh40TTJeenUALkjgg.woff2
 https://fonts.gstatic.com/s/philosopher/v7/napvkewXG9Gqby5vwGHICIlIZu-HDpmDIZMigmsroc4.woff2

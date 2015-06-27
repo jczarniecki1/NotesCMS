@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://quiet-atoll-4711.herokuapp.com/ -->
+<html lang="en" ng-app="app" ng-class="{&#39;inverted&#39;: inverted}" class="ng-scope">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+        </style>
+        <title>NotesCMS</title>
+        <link href="https://quiet-atoll-4711.herokuapp.com/favicon.ico" rel="icon" type="image/x-icon">
+        <!---->
+        <link rel="stylesheet" href="https://quiet-atoll-4711.herokuapp.com/dest/min/all.min.css">
+        <style></style>
+    </head>
+    
+    <body>
+        <div class="main page" inverted="inverted">
+            <div class="toolbar-top">
+                <div ng-click="gotoStarred()" class="btn btn-default mdi-2x mdi-action-stars "></div>
+                <div ng-click="gotoBookmarks()" class="btn btn-default mdi-2x mdi-action-turned-in "></div>
+                <div ng-click="gotoSearch()" class="btn btn-default mdi-2x mdi-action-pageview"></div>
+                <div ng-click="createNewNote()" class="btn btn-default mdi-2x mdi-content-add"></div>
+            </div>
+            <div class="toolbar-bottom">
+                <div ng-click="invertColors()" class="btn btn-default mdi-2x mdi-communication-invert-colors-on"></div>
+                <div ng-click="gotoUserProfile()" class="btn btn-default mdi-2x mdi-action-account-box "></div>
+            </div>
+            <!-- ngIf: !showUserProfile -->
+            <div ng-if="!showUserProfile" class="content ng-scope">
+                <div class="banner">
+                    <h1>Ultimate Notepad</h1>
+                    <h2>Take your studies offline</h2>
+                </div>
+                <subject-tabs selected="currentSubject" items="user.subjects" theme="user.theme" class="ng-isolate-scope">
+                    <div class="navbar navbar-material-cyan">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div aria-expanded="false" style="height: 1px;" class="navbar-collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li ng-class="{ &#39;active&#39;: selected.name === &#39;All&#39; }" ng-click="select({name:&#39;All&#39;, showAll:true})"
+                                class="active">
+                                    <a href="https://quiet-atoll-4711.herokuapp.com/#All">All</a>
+                                </li>
+                                <!-- ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="https://quiet-atoll-4711.herokuapp.com/#ZPR" class="ng-binding">ZPR</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="https://quiet-atoll-4711.herokuapp.com/#TBO" class="ng-binding">TBO</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="https://quiet-atoll-4711.herokuapp.com/#JFA" class="ng-binding">JFA</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a data-toggle="modal" data-target="#quick-add-subject-dialog" class="add-subject"><i class="mdi-content-add"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="quick-add-subject-dialog" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h4 class="modal-title">New subject</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="quick-add-subject-form" ng-submit="addSubject()" class="ng-pristine ng-invalid ng-invalid-required">
+                                            <div class="form-group">
+                                                <label for="newSubjectName" class="col-lg-2 control-label">Name</label>
+                                                <div class="col-lg-10">
+                                                    <input id="newSubjectName" type="textr" ng-model="newSubjectName" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Abort</button>
+                                        <input type="submit" form="quick-add-subject-form" value="Add to my subjects" class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </subject-tabs>
+                <note-list items="allNotes" subject="currentSubject" selected="currentNote" filter-favourites="filterFavourites" filter-bookmarks="filterBookmarks"
+                show-user-notes="user.enabled" class="ng-isolate-scope">
+                    <div class="list-group">
+                        <!-- ngIf: !items.filter(itemsFilter).length -->
+                        <!-- ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <i ng-if="item.flags.starred" class="mdi-action-grade ng-scope"></i>
+                                    <!-- end ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->High Performance Browser Networking</div>
+                                <div class="list-group-item-text ng-binding">TBO | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->Lorem weekend awesome programming notes</div>
+                                <div class="list-group-item-text ng-binding">IAB | Lecture</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->hard ipsum awesome Lorem Lorem</div>
+                                <div class="list-group-item-text ng-binding">TBO | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->awesome Lorem programming ipsum programming</div>
+                                <div class="list-group-item-text ng-binding">JPA | Lecture</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->weekend work programming notes lots of</div>
+                                <div class="list-group-item-text ng-binding">JPA | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                    </div>
+                </note-list>
+                <note-preview items="allNotes" item="currentNote" class="ng-isolate-scope">
+                    <!-- ngIf: item -->
+                </note-preview>
+            </div>
+            <!-- end ngIf: !showUserProfile -->
+            <!-- ngIf: showUserProfile -->
+        </div>
+        <input id="textAngular-editableFix-010203040506070809" class="ta-hidden-input" unselectable="on" tabindex="-1">
+        <div class="offline-ui offline-ui-up">
+            <div class="offline-ui-content"></div>
+            <a href="" class="offline-ui-retry"></a>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:8080/#All -->
+<html lang="en" ng-app="app" ng-class="{&#39;inverted&#39;: inverted}" class="ng-scope">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+        </style>
+        <title>NotesCMS</title>
+        <link href="http://localhost:8080/favicon.ico" rel="icon" type="image/x-icon">
+        <!---->
+        <link rel="stylesheet" href="http://localhost:8080/dest/min/all.critical.min.css">
+        <style></style>
+    </head>
+    
+    <body>
+        <div class="main page" inverted="inverted">
+            <div class="toolbar-top">
+                <div ng-click="gotoStarred()" class="btn btn-default mdi-2x mdi-action-stars "></div>
+                <div ng-click="gotoBookmarks()" class="btn btn-default mdi-2x mdi-action-turned-in "></div>
+                <div ng-click="gotoSearch()" class="btn btn-default mdi-2x mdi-action-pageview"></div>
+                <div ng-click="createNewNote()" class="btn btn-default mdi-2x mdi-content-add"></div>
+            </div>
+            <div class="toolbar-bottom">
+                <div ng-click="invertColors()" class="btn btn-default mdi-2x mdi-communication-invert-colors-on"></div>
+                <div ng-click="gotoUserProfile()" class="btn btn-default mdi-2x mdi-action-account-box "></div>
+            </div>
+            <!-- ngIf: !showUserProfile -->
+            <div ng-if="!showUserProfile" class="content ng-scope">
+                <div class="banner">
+                    <h1>Ultimate Notepad</h1>
+                    <h2>Take your studies offline</h2>
+                </div>
+                <subject-tabs selected="currentSubject" items="user.subjects" theme="user.theme" class="ng-isolate-scope">
+                    <div class="navbar navbar-material-light-green">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div aria-expanded="false" style="height: 1px;" class="navbar-collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li ng-class="{ &#39;active&#39;: selected.name === &#39;All&#39; }" ng-click="select({name:&#39;All&#39;, showAll:true})"
+                                class="active">
+                                    <a href="./preview_files/preview.html">All<div class="ripple-wrapper"></div></a>
+                                </li>
+                                <!-- ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="http://localhost:8080/#ZPR" class="ng-binding">ZPR<div class="ripple-wrapper"></div></a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="http://localhost:8080/#TBO" class="ng-binding">TBO</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="http://localhost:8080/#IAB" class="ng-binding">IAB</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                                <li ng-repeat="item in items" ng-click="select(item)" ng-class="{ &#39;active&#39;: item === selected }" class="ng-scope">
+                                    <a href="http://localhost:8080/#ELE" class="ng-binding">ELE</a>
+                                </li>
+                                <!-- end ngRepeat: item in items -->
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a data-toggle="modal" data-target="#quick-add-subject-dialog" class="add-subject"><i class="mdi-content-add"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="quick-add-subject-dialog" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h4 class="modal-title">New subject</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="quick-add-subject-form" ng-submit="addSubject()" class="ng-pristine ng-invalid ng-invalid-required">
+                                            <div class="form-group">
+                                                <label for="newSubjectName" class="col-lg-2 control-label">Name</label>
+                                                <div class="col-lg-10">
+                                                    <input id="newSubjectName" type="textr" ng-model="newSubjectName" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Abort</button>
+                                        <input type="submit" form="quick-add-subject-form" value="Add to my subjects" class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </subject-tabs>
+                <note-list items="allNotes" subject="currentSubject" selected="currentNote" filter-favourites="filterFavourites" filter-bookmarks="filterBookmarks"
+                show-user-notes="user.enabled" class="ng-isolate-scope">
+                    <div class="list-group">
+                        <!-- ngIf: !items.filter(itemsFilter).length -->
+                        <!-- ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope selected">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <i ng-if="item.flags.starred" class="mdi-action-grade ng-scope"></i>
+                                    <!-- end ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->High Performance Browser Networking</div>
+                                <div class="list-group-item-text ng-binding">SEM2 | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <i ng-if="!item.flags.done &amp;&amp; !item.flags.owned" class="mdi-content-forward mdi-lg ng-scope"></i>
+                                <!-- end ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <i ng-if="item.flags.starred" class="mdi-action-grade ng-scope"></i>
+                                    <!-- end ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->
+                                    <i ng-if="item.flags.readLater" class="mdi-action-turned-in ng-scope"></i>
+                                    <!-- end ngIf: item.flags.readLater -->weekend hard weekend lots of very</div>
+                                <div class="list-group-item-text ng-binding">JPA | Project</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <i ng-if="item.flags.owned &amp;&amp; !item.flags.edit" class="mdi-action-settings mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->very weekend weekend Lorem Lorem</div>
+                                <div class="list-group-item-text ng-binding">SEM2 | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <i ng-if="!item.flags.done &amp;&amp; !item.flags.owned" class="mdi-content-forward mdi-lg ng-scope"></i>
+                                <!-- end ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->lots of very very very Lorem</div>
+                                <div class="list-group-item-text ng-binding">KOR | Exercises</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <i ng-if="!item.flags.done &amp;&amp; !item.flags.owned" class="mdi-content-forward mdi-lg ng-scope"></i>
+                                <!-- end ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->
+                                    <i ng-if="item.flags.readLater" class="mdi-action-turned-in ng-scope"></i>
+                                    <!-- end ngIf: item.flags.readLater -->very hard very very awesome</div>
+                                <div class="list-group-item-text ng-binding">ZPR | Lecture</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                        <div ng-repeat="item in items | filter: itemsFilter | orderBy: &#39;[-flags.edit,-flags.starred,starredOrderValue,createdDate]&#39;"
+                        ng-click="select(item)" ng-class="{ &#39;selected&#39;: item === selected }" class="list-group-item ng-scope">
+                            <div class="row-action-primary">
+                                <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                                <!-- ngIf: !item.flags.done && !item.flags.owned -->
+                                <!-- ngIf: item.flags.done -->
+                                <i ng-if="item.flags.done" class="mdi-navigation-check mdi-lg ng-scope"></i>
+                                <!-- end ngIf: item.flags.done -->
+                                <!-- ngIf: item.flags.edit -->
+                            </div>
+                            <div class="row-content">
+                                <div class="list-group-item-heading ng-binding">
+                                    <!-- ngIf: item.flags.starred -->
+                                    <!-- ngIf: item.flags.readLater -->Lorem very Lorem programming ipsum</div>
+                                <div class="list-group-item-text ng-binding">ZPR | Lecture</div>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: item in items | filter: itemsFilter | orderBy: '[-flags.edit,-flags.starred,starredOrderValue,createdDate]'
+                        -->
+                    </div>
+                </note-list>
+                <note-preview items="allNotes" item="currentNote" class="ng-isolate-scope">
+                    <!-- ngIf: item -->
+                    <div ng-if="item" ng-class="{ &#39;edit-mode&#39;: item.flags.edit }" class="note-preview-content ng-scope">
+                        <!-- ngIf: !item.flags.edit -->
+                        <h3 ng-if="!item.flags.edit" class="note-title ng-binding ng-scope">
+                            <i ng-class="{ &#39;active&#39;: !!item.starredDate }" ng-click="toggleStarred(item)" class="starred-title-icon mdi-action-grade active"></i>&nbsp;High Performance Browser Networking
+                            <i ng-click="print()" class="print-note-icon mdi-action-print"></i>
+                        </h3>
+                        <!-- end ngIf: !item.flags.edit -->
+                        <!-- ngIf: !item.flags.edit -->
+                        <p ng-if="!item.flags.edit" class="ng-binding ng-scope">SEM2 | Exercises</p>
+                        <!-- end ngIf: !item.flags.edit -->
+                        <!-- ngIf: !item.flags.edit -->
+                        <p ng-bind-html="item.content" ng-if="!item.flags.edit" class="ng-binding ng-scope">
+                            <h1>HTTP 2.0
+                                <br>
+                            </h1>
+                            <h3>Lack of multiplexing (HTTP 1.1)</h3>
+                            <p>A single slo
+                                <i>w respons</i>e blocks all requests behind it.&nbsp;
+                                <span style="background-color: transparent;">Parallel requests requires buffering on the server.&nbsp;</span>
+                                <span style="background-color: transparent;">Failed response may terminate TCP connection, forcing the client to request subsequent resou
+                                    <b>rces again.&nbsp;</b>
+                                </span>
+                                <span style="background-color: transparent;">
+                                    <b>Pip</b>elining requires&nbsp;tunneling&nbsp;(HTTPS) as best&nbsp;practice.&nbsp;</span>
+                                <span style="background-color: transparent;">Clients that want to maximize throughput open multiple TCP streams (it costs).</span>
+                            </p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p>
+                                <span style="background-color: transparent;"></span>
+                            </p>
+                            <ul>
+                                <li>
+                                    <span style="background-color: transparent;">6 connections per host is a trade-off (overhead vs transfer)</span>
+                                    <br>
+                                </li>
+                            </ul>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <hr>
+                            <h3>Domain sharding</h3>
+                            <ul>
+                                <li>More overhead and DNS lookups</li>
+                                <li>
+                                    <span style="background-color: transparent;">But we use them if 6 connections is not enough</span>
+                                    <br>
+                                </li>
+                                <li>
+                                    <span style="background-color: transparent;">It actually hurts user experience if many of the connections never escape TCP slow-start</span>
+                                </li>
+                                <ul>
+                                    <li>
+                                        <span style="background-color: transparent;">Affects high-latency clients the most (e.g. Mobile devices using 3G and 4G)</span>
+                                    </li>
+                                </ul>
+                            </ul>
+                            <p></p>
+                            <hr>
+                            <h3>Protocol overhead</h3>
+                            <ul>
+                                <li>
+                                    <span style="background-color: transparent;">Headers are not compressed (and cookies)</span>
+                                </li>
+                                <li>
+                                    <span style="background-color: transparent;">Chatty behavior of web apps can lead to HTTP overhead that exceeds payload</span>
+                                </li>
+                                <li>
+                                    <span style="background-color: transparent;">Large enough to mitigate networking overhead</span>
+                                    <br>
+                                </li>
+                            </ul>
+                            <p>
+                                <br>
+                            </p>
+                            <p></p>
+                            <p></p>
+                            <blockquote>
+                                <p>
+                                    <span style="background-color: transparent;">Ideal size of a CSS or a JavaScript bundle:&nbsp;</span>
+                                    <span style="background-color: transparent;">
+                                        <b>
+                                            <u>30-50KB</u>
+                                        </b>&nbsp;</span>
+                                    <span style="background-color: transparent;">(compressed)</span>
+                                </p>
+                            </blockquote>
+                            <p>
+                                <span style="background-color: transparent;">
+                                    <span id="selectionBoundary_1434409052409_06158166378736496" class="rangySelectionBoundary">﻿</span>
+                                </span>
+                            </p>
+                        </p>
+                        <!-- end ngIf: !item.flags.edit -->
+                        <!-- ngIf: item.flags.edit -->
+                        <!-- ngIf: !item.flags.owned -->
+                        <!-- ngIf: !item.flags.owned -->
+                        <!-- ngIf: !item.flags.owned -->
+                        <div id="request-dialog" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h4 class="modal-title">Request update</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="ng-pristine ng-valid">
+                                            <div class="form-group">
+                                                <label for="requestMessage" class="col-lg-2 control-label">Message</label>
+                                                <div class="col-lg-10">
+                                                    <textarea id="requestMessage" rows="3" ng-model="requestMessage" autofocus="autofocus" class="form-control ng-pristine ng-untouched ng-valid"></textarea>
+                                                    <span class="help-block">Message will be sent to the author and his group administrator.</span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Abort</button>
+                                        <button type="button" class="btn btn-primary">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ngIf: item.flags.owned -->
+                        <div ng-if="item.flags.owned" data-toggle="modal" data-target="#remove-dialog" class="btn btn-danger btn-raised right ng-scope">Remove</div>
+                        <!-- end ngIf: item.flags.owned -->
+                        <div id="remove-dialog" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h4 class="modal-title">Are you sure? Current note will be lost forever...</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Abort</button>
+                                        <button type="button" ng-click="removeCurrentItem()" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ngIf: item.flags.owned -->
+                        <div ng-if="item.flags.owned" ng-click="toggleEditMode(item)" class="btn btn-success btn-raised right ng-binding ng-scope">Edit</div>
+                        <!-- end ngIf: item.flags.owned -->
+                        <!-- ngIf: item.flags.owned && !item.flags.edit -->
+                        <div ng-if="item.flags.owned &amp;&amp; !item.flags.edit" ng-click="togglePublished(item)" class="btn btn-warning btn-raised ng-binding ng-scope">Publish</div>
+                        <!-- end ngIf: item.flags.owned && !item.flags.edit -->
+                    </div>
+                    <!-- end ngIf: item -->
+                </note-preview>
+            </div>
+            <!-- end ngIf: !showUserProfile -->
+            <!-- ngIf: showUserProfile -->
+        </div>
+        <input id="textAngular-editableFix-010203040506070809" class="ta-hidden-input" unselectable="on" tabindex="-1">
+        <div class="offline-ui offline-ui-up">
+            <div class="offline-ui-content"></div>
+            <a href="" class="offline-ui-retry"></a>
+        </div>
+    </body>
+
+</html>

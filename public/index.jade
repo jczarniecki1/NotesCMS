@@ -4,7 +4,7 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
         title NotesCMS
         link(href="favicon.ico", rel="icon", type="image/x-icon")
         //
-        link(rel="stylesheet", href="/dest/min/all.min.css")
+        link(rel="stylesheet", href="/dest/min/all.critical.min.css")
         
     body
         layout.main(inverted="inverted") Loading...
@@ -18,10 +18,7 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
             script
                 | Leftovers = {
                 |   stylesheets: [
-                |     '/vendor/font-awesome/css/font-awesome.css',
-                |     '/vendor/textAngular/dist/textAngular.css',
-                |     '/vendor/offline/themes/offline-language-english-indicator.css',
-                |     '/vendor/offline/themes/offline-theme-chrome-indicator.css',
+                |     '/dest/min/all.min.css',
                 |     '/dest/styles/webfonts.css'
                 |   ],
                 |   callbacks: [
@@ -33,4 +30,4 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
                 |   reconnect: { delay: 3 }
                 | };
             script(src="/dest/app/utils/loadLeftovers.js", async)
-            
+                    

@@ -47,13 +47,25 @@ gulp.task 'bundle-styles', ['sass'], ->
                 'public/vendor/sweetalert/dist/sweetalert.css'
                 'public/vendor/angularjs/angular-csp.css'
                 
+                'public/vendor/font-awesome/css/font-awesome.css'
+                'public/vendor/textAngular/dist/textAngular.css'
+
+                'public/vendor/offline/themes/offline-language-english-indicator.css'
+                'public/vendor/offline/themes/offline-theme-chrome-indicator.css'
+
                 'public/dest/styles/site.css'
             ]
         .pipe $.concat 'all.min.css'
-        .pipe $.cssmin()
         .pipe gulp.dest 'public/dest/min'
         
-    gulp.src 'public/vendor/bootstrap-material-design/dist/fonts/Material*.*'
+        .pipe $.uncss html: ['public/tmp/*.html']
+        .pipe $.rename 'all.critical.min.css'
+        .pipe gulp.dest 'public/dest/min'
+        
+    gulp.src [
+                'public/vendor/bootstrap-material-design/dist/fonts/Material*.*'
+                'public/vendor/font-awesome/fonts/fontawesome*.*'
+            ]
         .pipe gulp.dest 'public/dest/fonts'
 
 
