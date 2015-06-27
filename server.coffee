@@ -3,10 +3,10 @@ compression = require 'compression'
 path 		= require 'path'
 
 headers =
-	maxAge: 345600000
+	maxAge: 31536000
 	setHeaders: (res) ->
-        res.setHeader 'Cache-Control', 'public, max-age=345600000'
-        res.setHeader 'Expires', new Date(Date.now() + 345600000).toUTCString()
+        res.setHeader 'Cache-Control', 'public, max-age=31536000'
+        res.setHeader 'Expires', new Date(Date.now() + 31536000).toUTCString()
 
 app = new express()
 app
