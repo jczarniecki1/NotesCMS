@@ -3,7 +3,7 @@ class Alert
 
     ShowAfter: (timeout) ->
         setTimeout =>
-            if $('.main').text() is 'Loading...'
+            if $('.main').find('.loading').length
                 sweetAlert
                     type: 'warning'
                     title: @title
