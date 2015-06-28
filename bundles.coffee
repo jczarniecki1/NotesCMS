@@ -2,7 +2,7 @@ gulp = require('gulp')
 $ = require('gulp-load-plugins')()
 
 gulp.task 'bundle-libs', ->
-    gulp.src [
+    gulp.src [            
                 'public/vendor/arrive/src/arrive.js'
                 'public/vendor/bootstrap/dist/js/bootstrap.min.js'
                 'public/vendor/bootstrap-material-design/dist/js/material.js'
@@ -37,6 +37,16 @@ gulp.task 'bundle-app', ['coffee', 'jade'], ->
         .pipe $.ngAnnotate()
         .pipe $.uglify()
         .pipe gulp.dest 'public/dest/min'
+        
+gulp.task 'bundle-scripts', ['bundle-libs', 'bundle-app'], ->   
+    gulp.src [
+                'public/vendor/jquery/dist/jquery.min.js'
+                'public/vendor/angularjs/angular.min.js'
+                'public/dest/min/libs.min.js'
+                'public/dest/min/app.min.js'
+            ]
+        .pipe $.concat 'all.min.js'
+        .pipe gulp.dest 'public/dest/min'
 
 gulp.task 'bundle-styles', ['sass'], ->
     gulp.src [
@@ -69,4 +79,4 @@ gulp.task 'bundle-styles', ['sass'], ->
         .pipe gulp.dest 'public/dest/fonts'
 
 
-gulp.task 'bundle', ['bundle-libs', 'bundle-app', 'bundle-styles']
+gulp.task 'bundle', ['bundle-scripts', 'bundle-styles']
