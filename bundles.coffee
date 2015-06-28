@@ -32,6 +32,7 @@ gulp.task 'bundle-app', ['coffee', 'jade'], ->
                 'public/dest/app/note/NoteList.js'
                 'public/dest/app/note/NotePreview.js'
                 'public/dest/app/user/UserProfile.js'
+                'public/dest/app/utils/callLeftoversLoader.js'
             ]
         .pipe $.concat 'app.min.js'
         .pipe $.ngAnnotate()

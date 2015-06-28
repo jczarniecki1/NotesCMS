@@ -14,7 +14,7 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
                 .loading-bar
                 .loading-bar
                 .loading-bar
-
+        
         script(src="/dest/min/all.min.js")
         //
         script
@@ -24,11 +24,13 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
             |     '/dest/styles/webfonts.css'
             |   ],
             |   callbacks: [
-            |     { require:'Offline', run:function(){ Offline.check(); }, delay:200 }
+            |     { require:'Offline', 
+            |       run:function(){ 
+            |         Offline.options = {
+            |           checks: { xhr: { url: '/connection-test' } },
+            |           reconnect: { delay: 3 }
+            |         };
+            |         Offline.check();
+            |       }, delay:200 }
             |   ]
             | };
-            | Offline.options = {
-            |   checks: { xhr: { url: '/connection-test' } },
-            |   reconnect: { delay: 3 }
-            | };
-        script(src="/dest/app/utils/loadLeftovers.js", async)
