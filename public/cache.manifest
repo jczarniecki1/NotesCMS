@@ -1,21 +1,16 @@
 CACHE MANIFEST
-#rev 2
+#rev 3
 /favicon.ico
 
-/vendor/bootstrap/dist/css/bootstrap.min.css
-/vendor/bootstrap-material-design/dist/css/material.min.css
 /dest/min/all.critical.min.css
 
 /dest/min/all.min.css
 /dest/styles/webfonts.css
+/vendor/bootstrap-material-design/dist/css/material.min.css
 
-/vendor/jquery/dist/jquery.min.js
-/vendor/angularjs/angular.min.js
-/dest/min/libs.min.js
-/dest/min/app.min.js
+/dest/min/all.min.js
 
 /dest/app/utils/loadLeftovers.js
-/vendor/offline/offline.min.js
 
 /dest/fonts/Material-Design-Icons.woff
 /dest/fonts/Material-Design-Icons.ttf
@@ -28,7 +23,6 @@ CACHE MANIFEST
 https://fonts.gstatic.com/s/muli/v7/T-qN9Yh40TTJeenUALkjgg.woff2
 https://fonts.gstatic.com/s/philosopher/v7/napvkewXG9Gqby5vwGHICIlIZu-HDpmDIZMigmsroc4.woff2
 https://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2
-
 
 NETWORK:
 *

@@ -5,6 +5,10 @@ body,
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
+body, h1, h2, h3, h4 {
+	font-family: 'Helvetica Neue', Helvetica, 'Noto Sans', Arial, sans-serif;
+}
+
 .content {
 	position: absolute;
 	height: 100%;

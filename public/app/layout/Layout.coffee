@@ -8,7 +8,7 @@ defaultSubjects = [
 fontFamilyOptions = [
 	{ name: 'Muli', 	   value: 'Muli, sans-serif' }
 	{ name: 'Open Sans',   value: 'Open Sans, sans-serif' }
-	{ name: 'Helvetica',   value: 'Helvetica Neue, Helvetica, Arial, sans-serif' }
+	{ name: 'Helvetica',   value: 'Helvetica Neue, Helvetica, Noto Sans, Arial, sans-serif' }
 	{ name: 'Philosopher', value: 'Philosopher, serif' }
 	{ name: 'Palatino',    value: 'Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif' }
 	{ name: 'Candara',     value: 'Candara, sans-serif' }
@@ -119,5 +119,5 @@ class Layout extends Directive
 				if localStorage.fontFamily
 					scope.user.fontFamily = JSON.parse(localStorage.fontFamily)
 				else
-					scope.user.fontFamily = 1
+					scope.user.fontFamily = 2
 		}

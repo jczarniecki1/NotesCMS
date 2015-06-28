@@ -2,15 +2,17 @@ allColors = []
 allColors.refresh = ->
 
 $ ->
-    $.when $.get("/vendor/bootstrap-material-design/dist/css/material.min.css")
-    .done (response) ->
-        [].splice.apply allColors, [0,0].concat do ->
-            _all = response
-                .match(/.mdi-material-[a-z\-0-9]+,/g)
-                .map (x) -> x.match(/.mdi-material-([a-z\-0-9]+),/)[1]
-            return _all.filter (x, i) -> i is _all.lastIndexOf x
-        try
-            allColors.refresh()
+    setTimeout ->
+        $.when $.get("/vendor/bootstrap-material-design/dist/css/material.min.css")
+        .done (response) ->
+            [].splice.apply allColors, [0,0].concat do ->
+                _all = response
+                    .match(/.mdi-material-[a-z\-0-9]+,/g)
+                    .map (x) -> x.match(/.mdi-material-([a-z\-0-9]+),/)[1]
+                return _all.filter (x, i) -> i is _all.lastIndexOf x
+            try
+                allColors.refresh()
+    , 200
 
 class UserProfile extends Directive
     constructor: ->
