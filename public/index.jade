@@ -16,8 +16,11 @@ html(lang="en", ng-app="app", ng-class="{'inverted': inverted}", manifest="/cach
                 .loading-bar
 
         .scripts
+            script(src="/vendor/jquery/dist/jquery.min.js")
+            script(src="/vendor/angularjs/angular.min.js")
             //
-            script(src="/dest/min/all.min.js")
+            script(src="/dest/min/libs.min.js")
+            script(src="/dest/min/app.min.js")
             //
             script
                 | Leftovers = {

@@ -38,16 +38,6 @@ gulp.task 'bundle-app', ['coffee', 'jade'], ->
         .pipe $.uglify()
         .pipe gulp.dest 'public/dest/min'
         
-gulp.task 'bundle-scripts', ['bundle-libs', 'bundle-app'], ->   
-    gulp.src [
-                'public/vendor/jquery/dist/jquery.min.js'
-                'public/vendor/angularjs/angular.min.js'
-                'public/dest/min/libs.min.js'
-                'public/dest/min/app.min.js'
-            ]
-        .pipe $.concat 'all.min.js'
-        .pipe gulp.dest 'public/dest/min'
-
 gulp.task 'bundle-styles', ['sass'], ->
     gulp.src [
                 'public/vendor/bootstrap/dist/css/bootstrap.min.css'
@@ -79,4 +69,4 @@ gulp.task 'bundle-styles', ['sass'], ->
         .pipe gulp.dest 'public/dest/fonts'
 
 
-gulp.task 'bundle', ['bundle-scripts', 'bundle-styles']
+gulp.task 'bundle', ['bundle-libs', 'bundle-app', 'bundle-styles']

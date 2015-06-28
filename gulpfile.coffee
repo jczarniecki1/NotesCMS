@@ -38,8 +38,8 @@ gulp.task 'jade', ->
 
 
 gulp.task 'watch', ->
-    gulp.watch 'public/app/**/*.coffee'    , ['coffee', 'bundle-scripts']
-    gulp.watch 'public/templates/**/*.jade', ['jade', 'bundle-scripts']
+    gulp.watch 'public/app/**/*.coffee'    , ['coffee', 'bundle-app']
+    gulp.watch 'public/templates/**/*.jade', ['jade', 'bundle-app']
     gulp.watch 'public/index.jade'         , ['jade']
     gulp.watch 'public/styles/**/*.scss'   , ['sass', 'bundle-styles']
 
