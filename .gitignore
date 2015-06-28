@@ -6,3 +6,4 @@ public/index.html
 .settings
 .idea
 deploy.bat
+rollback.bat
