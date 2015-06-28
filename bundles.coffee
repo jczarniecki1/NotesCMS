@@ -46,6 +46,7 @@ gulp.task 'bundle-scripts', ['bundle-libs', 'bundle-app'], ->
                 'public/dest/min/app.min.js'
             ]
         .pipe $.concat 'all.min.js'
+        .pipe $.uglify()
         .pipe gulp.dest 'public/dest/min'
 
 gulp.task 'bundle-styles', ['sass'], ->
@@ -66,10 +67,12 @@ gulp.task 'bundle-styles', ['sass'], ->
                 'public/dest/styles/site.css'
             ]
         .pipe $.concat 'all.min.css'
+        .pipe $.cssmin(keepSpecialComments: 0)
         .pipe gulp.dest 'public/dest/min'
         
         .pipe $.uncss html: ['public/tmp/*.html']
         .pipe $.rename 'all.critical.min.css'
+        .pipe $.cssmin(keepSpecialComments: 0)
         .pipe gulp.dest 'public/dest/min'
         
     gulp.src [
