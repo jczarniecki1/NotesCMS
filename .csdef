@@ -1,0 +1,5 @@
+<Startup>
+  <Task commandLine="env.cmd" 
+        executionContext="elevated" 
+        taskType="simple" />
+</Startup>
