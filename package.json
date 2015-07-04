@@ -36,8 +36,6 @@
     "node": "0.12.x"
   },
   "scripts": {
-    "preinstall": "npm i -g bower",
-    "postinstall": "bower install",
     "start": "node node_modules/coffee-script/bin/coffee server.coffee"
   }
 }

@@ -6,7 +6,7 @@ CACHE MANIFEST
 
 /dest/min/all.min.css
 /dest/styles/webfonts.css
-/vendor/bootstrap-material-design/dist/css/material.min.css
+/dest/styles/material.min.css
 
 /dest/min/all.min.js
 

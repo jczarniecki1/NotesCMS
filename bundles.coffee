@@ -82,5 +82,10 @@ gulp.task 'bundle-styles', ['sass'], ->
             ]
         .pipe gulp.dest 'public/dest/fonts'
 
+    gulp.src [
+                'public/vendor/bootstrap-material-design/dist/css/material.min.css'
+            ]
+        .pipe gulp.dest 'public/dest/styles'
+
 
 gulp.task 'bundle', ['bundle-scripts', 'bundle-styles']
