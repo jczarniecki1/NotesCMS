@@ -36,6 +36,6 @@
     "node": "0.12.x"
   },
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   }
 }
