@@ -8,9 +8,12 @@ headers =
         res.setHeader 'Cache-Control', 'public, max-age=31536000'
         res.setHeader 'Expires', new Date(Date.now() + 31536000).toUTCString()
 
+port = process.env.PORT or 8080
 app = new express()
 app
 	.use compression()
 	.use express.static(path.normalize(__dirname + '/public'), headers)
 	.get '/connection-test', (req, res) -> res.sendStatus 200
-	.listen (process.env.PORT or 8080)
+	.listen port
+
+console.log "Listening on port #{port}"
