@@ -1,7 +1,5 @@
 node_modules
 public/vendor
-public/dest
-public/index.html
 .sass-cache
 .settings
 .idea
