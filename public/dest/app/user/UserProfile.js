@@ -6,7 +6,7 @@ allColors.refresh = function() {};
 
 $(function() {
   return setTimeout(function() {
-    return $.when($.get("/vendor/bootstrap-material-design/dist/css/material.min.css")).done(function(response) {
+    return $.when($.get("/dest/styles/material.min.css")).done(function(response) {
       [].splice.apply(allColors, [0, 0].concat((function() {
         var _all;
         _all = response.match(/.mdi-material-[a-z\-0-9]+,/g).map(function(x) {

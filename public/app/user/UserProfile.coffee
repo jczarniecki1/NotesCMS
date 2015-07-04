@@ -3,7 +3,7 @@ allColors.refresh = ->
 
 $ ->
     setTimeout ->
-        $.when $.get("/vendor/bootstrap-material-design/dist/css/material.min.css")
+        $.when $.get("/dest/styles/material.min.css")
         .done (response) ->
             [].splice.apply allColors, [0,0].concat do ->
                 _all = response
