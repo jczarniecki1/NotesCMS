@@ -6,7 +6,7 @@ $ = require('gulp-load-plugins')()
 
 
 gulp.task 'coffee', ->
-	return gulp.src ['src', 'public/app/**/*.coffee']
+	return gulp.src ['public/app/**/*.coffee']
         .pipe $.plumber()
         .pipe $.ngClassify (file) ->
             if file.path.indexOf('admin') isnt -1
@@ -15,6 +15,12 @@ gulp.task 'coffee', ->
                 { appName: 'app' }
 		.pipe $.coffee { bare: true }
 		.pipe gulp.dest 'public/dest/app'
+
+
+gulp.task 'build-server', ->
+	return gulp.src ['server.coffee']
+		.pipe $.coffee { bare: true }
+		.pipe gulp.dest '.'
 
 
 gulp.task 'sass', ->
@@ -38,10 +44,11 @@ gulp.task 'jade', ->
 
 
 gulp.task 'watch', ->
+    gulp.watch 'server.coffee'             , ['build-server']
     gulp.watch 'public/app/**/*.coffee'    , ['coffee', 'bundle-scripts']
     gulp.watch 'public/templates/**/*.jade', ['jade', 'bundle-scripts']
     gulp.watch 'public/index.jade'         , ['jade']
     gulp.watch 'public/styles/**/*.scss'   , ['sass', 'bundle-styles']
 
 
-gulp.task 'default', ['bundle']
+gulp.task 'default', ['bundle', 'build-server']
